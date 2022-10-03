@@ -1,0 +1,12 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+:root {
+    --blanco: #FFFFFF;
+    --negro: #000000;
+
+    --gris-1: #E0E0E0;
+    --gris-2: #BDBDBD;
+    --gris-3: #9E9E9E;
+
+    ---azul: #18529D;
+    ---verde: #28AD56;
+}
