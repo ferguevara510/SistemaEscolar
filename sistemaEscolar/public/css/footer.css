@@ -6,68 +6,11 @@ body {
 
 /*Footer*/
 #footer {
-    width: 90vw;
-    margin: 5rem auto 0rem auto;
-}
-
-#footer .contenedor {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-}
-
-#footer .contenedor h3 {
-    margin: 0;
-    padding-bottom: .4rem;
-    border-bottom-style: solid;
-    border-bottom-width: .3rem;
-    border-bottom-color: var(--verde);
-    text-transform: uppercase;
-    color: var(--azul);
-}
-
-#footer .contenedor .informacion {
-    margin: 1rem 2rem 0rem 2rem;
-}
-
-#footer .contenedor .informacion p {
-    margin: 1rem 0rem;
-    color: var(--azul);
-}
-
-#footer .contenedor .contacto {
-    margin: 1rem 2rem 0rem 2rem;
-}
-
-#footer .contenedor .contacto .opcion {
-    margin: 1rem 0rem;
-    display: flex;
+    background-color: var(--verde);
     align-items: center;
-    color: var(--verde);
-}
-
-#footer .contenedor .contacto .opcion .icono {
-    font-size: 2.4rem;
-}
-
-#footer .contenedor .contacto .opcion .titulo,
-#footer .contenedor .contacto .opcion .contenido,
-#footer .contenedor .contacto .opcion a {
-    margin-left: 1rem;
-}
-
-#footer .contenedor .contacto .opcion a {
-    text-decoration: none;
-    color: var(--azul);
-}
-
-#footer .contenedor .contacto .opcion a:hover {
-    cursor: pointer;
-    color: var(--azul);
-}
-
-#footer .contenedor .leyenda {
-    grid-column: 1/3;
-    color: var(--azul);
+    padding-top: 15px;
+    padding-bottom: 5px;
+    left: 0;
+    right: 0;
     text-align: center;
 }

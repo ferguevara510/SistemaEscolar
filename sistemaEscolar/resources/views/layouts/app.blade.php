@@ -21,18 +21,18 @@
     @auth
         <header class="header_posicion">
             <nav class="posicion navbar-expand-md nav-container">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav">
                     <li><a class="texto-link" href="{{ route('estudianteList') }}">Estudiantes</a></li>
                     <li><a class="texto-link" href="{{ route('profesorList') }}">Profesores</a></li>
-                    <li class="session session-nav">
+                    <li class="session ">
                         <a id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <div class="menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
+                               onclick="event.preventDefault(); 
+                               document.getElementById('logout-form').submit();">
                                 {{ __('Cerrar Sesión') }}
                             </a>
 
@@ -50,7 +50,7 @@
         <div class="container">
             <div class="logo">
                 <a href="{{ route('home') }}">
-                    <img src="{{ asset ('src/img/') }}">
+                    <img src="{{ asset ('img/SEF.png') }}">
                 </a>
             </div>
 

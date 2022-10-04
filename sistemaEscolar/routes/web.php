@@ -28,8 +28,9 @@ Route::post('/registrarEstudiante', [EstudianteController::class, 'registrarEstu
 Route::get('/registrarProfesor', [ProfesorController::class, 'vistaRegistrarProfesor'])->name('profesorIndex');
 Route::post('/registrarProfesor', [ProfesorController::class, 'registrarProfesor'])->name('profesorStorage');
 
-Route::get('/consultarEstudiante', [EstudianteController::class, 'consultarListaEstudiante'])->name('estudianteList');
-Route::get('/consultarProfessor', [ProfesorController::class, 'consultarListaProfesor'])->name('profesorList');
+Route::get('/consultarEstudianteProfesor', [EstudianteController::class, 'consultarListaEstudiantesProfesor'])->name('estudianteProfList');
+Route::get('/consultarEstudiante', [EstudianteController::class, 'consultarListaEstudiantes'])->name('estudianteList');
+Route::get('/consultarProfesor', [ProfesorController::class, 'consultarListaProfesor'])->name('profesorList');
 
 Route::get('/modificarEstudiante/{estudiante}', [EstudianteController::class, 'mostrarEstudiante'])->name('estudianteShow');
 Route::put('/modificarEstudiante/{estudiante}', [EstudianteController::class, 'modificarEstudiante'])->name('estudianteEdit');

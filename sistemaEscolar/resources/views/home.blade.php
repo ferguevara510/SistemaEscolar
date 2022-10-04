@@ -20,17 +20,20 @@
 </head>
 
 <main>
-    <section id="informacion">
+    <section id="slider">
         <div class="contenedor">
+            <div class="imagen active">
+                <img src="img/UV.png"/>
+            </div>
             <div class="descripcion h1-color">
-                <h1>Universidad Veracruzana</h1>
+                <h1 class="titulo">Universidad Veracruzana</h1>
             </div>
         </div>
     </section>
 </main>
 
-<footer>
-    <div class="leyenda">
+<footer id="footer">
+    <div>
         <p>Todos los derechos reservados a Universidad Veracruzana</p>
     </div>
 </footer>

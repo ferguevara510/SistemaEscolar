@@ -17,7 +17,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('profesors', function (Blueprint $table) {
+        Schema::create('profesores', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->enum('licenciatura', Licenciatura::getValues())->nullable();
@@ -39,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profesors');
+        Schema::dropIfExists('profesores');
     }
 };

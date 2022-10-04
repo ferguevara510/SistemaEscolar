@@ -21,7 +21,7 @@ class EstudianteController extends Controller
         $enumEntidad = Entidad::getValues();
         $enumAreaAcademica = AreaAcademica::getValues();
         $enumRegion = Region::getValues();
-        return view('estudiante.registrar_estudiante', compact('enumLicencitura','enumEntidad','enumAreaAcademica','enumRegion'));
+        return view('estudiante.registrar_estudiante', compact('enumLicenciatura','enumEntidad','enumAreaAcademica','enumRegion'));
     }
 
     public function registrarEstudiante (Request $request){
@@ -40,16 +40,28 @@ class EstudianteController extends Controller
         return back()->with('success','Estudiante creado');
     }
 
-    public function consultarListaEstudiante (Request $request){
-        $estudiante = [];
+    public function consultarListaEstudiantes (Request $request){
+        $estudiantes = [];
         $busqueda = $request->input('busqueda');
         if ($busqueda){
-            $estudiante = Estudiante::query()->where('nombreEstudiante', 'LIKE', "%{$busqueda}%")->get();
+            $estudiantes = Estudiante::query()->where('nombreEstudiante', 'LIKE', "%{$busqueda}%")->get();
         }
         else {
-            $estudiante = Estudiante::all();
+            $estudiantes = Estudiante::all();
         }
-        return view('estudiante.consultar_estudiante', compact('estudiante'));
+        return view('estudiante.consultar_estudiante', compact('estudiantes'));
+    }
+
+    public function consultarListaEstudiantesProfesor (Request $request){
+        $estudiantes = [];
+        $busqueda = $request->input('busqueda');
+        if ($busqueda){
+            $estudiantes = Estudiante::query()->where('nombreEstudiante', 'LIKE', "%{$busqueda}%")->get();
+        }
+        else {
+            $estudiantes = Estudiante::all();
+        }
+        return view('estudiante.consultar_estudiantes_profesor', compact('estudiantes'));
     }
 
     public function modificarEstudiante (Request $request, $estudiante){
@@ -73,7 +85,7 @@ class EstudianteController extends Controller
         $enumEntidad = Entidad::getValues();
         $enumAreaAcademica = AreaAcademica::getValues();
         $enumRegion = Region::getValues();
-        return view('estudiante.modificar_estudiante', compact('estudiante','enumLicencitura','enumEntidad','enumAreaAcademica','enumRegion'));
+        return view('estudiante.modificar_estudiante', compact('estudiante','enumLicenciatura','enumEntidad','enumAreaAcademica','enumRegion'));
     }
 
     public function eliminarEstudiante (Estudiante $estudiante){

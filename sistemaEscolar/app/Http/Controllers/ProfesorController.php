@@ -21,7 +21,7 @@ class ProfesorController extends Controller
         $enumEntidad = Entidad::getValues();
         $enumAreaAcademica = AreaAcademica::getValues();
         $enumRegion = Region::getValues();
-        return view('profesor.registrar_profesor', compact('enumLicencitura','enumEntidad','enumAreaAcademica','enumRegion'));
+        return view('profesor.registrar_profesor', compact('enumLicenciatura','enumEntidad','enumAreaAcademica','enumRegion'));
     }
 
     public function registrarProfesor (Request $request){
@@ -41,15 +41,15 @@ class ProfesorController extends Controller
     }
 
     public function consultarListaProfesor (Request $request){
-        $profesor = [];
+        $profesores = [];
         $busqueda = $request->input('busqueda');
         if ($busqueda){
-            $profesor = Profesor::query()->where('nombreProfesor', 'LIKE', "%{$busqueda}%")->get();
+            $profesores = Profesor::query()->where('nombreProfesor', 'LIKE', "%{$busqueda}%")->get();
         }
         else {
-            $profesor = Profesor::all();
+            $profesores = Profesor::all();
         }
-        return view('profesor.consultar_profesor', compact('profesor'));
+        return view('profesor.consultar_profesor', compact('profesores'));
     }
 
     public function modificarProfesor (Request $request, $profesor){
@@ -73,11 +73,11 @@ class ProfesorController extends Controller
         $enumEntidad = Entidad::getValues();
         $enumAreaAcademica = AreaAcademica::getValues();
         $enumRegion = Region::getValues();
-        return view('profesor.modificar_profesor', compact('profesor','enumLicencitura','enumEntidad','enumAreaAcademica','enumRegion'));
+        return view('profesor.modificar_profesor', compact('profesor','enumLicenciatura','enumEntidad','enumAreaAcademica','enumRegion'));
     }
 
     public function eliminarProfesor (Profesor $profesor){
         $profesor->delete();
-        return redirect('/consultarProorfes')->with('success','Profesor eliminado');
+        return redirect('/consultarProfesor')->with('success','Profesor eliminado');
     }
 }

@@ -3,6 +3,12 @@ body {
     font-family: 'Open Sans', sans-serif;
     background: var(--gris-1);
 }
+.menu {
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: var(--azul);
+}
 
 /*Encabezado*/
 #titulo {
@@ -21,6 +27,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-top: 20px;
 }
 
 .logo h1 {
@@ -55,7 +62,7 @@ body {
 }
 
 .btn-login:active {
-    background: var(--verde);
+    background: var(--azul);
 }
 
 .btn-login .icono,
@@ -101,7 +108,7 @@ body {
 }
 
 .session-nav .dropdown-item:hover {
-    background-color: var(--verde);
+    background-color: var(--azul);
 }
 
 .session-nav .dropdown-menu {
