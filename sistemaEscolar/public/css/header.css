@@ -1,0 +1,166 @@
+body {
+    font-size: 14px; /*1rem = 10px*/
+    font-family: 'Open Sans', sans-serif;
+    background: var(--gris-1);
+}
+
+/*Encabezado*/
+#titulo {
+    width: 100vw;
+    box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+
+#titulo .contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0rem 3rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.logo h1 {
+    margin-left: 25px;
+    color: var(--verde);
+    font-size: xx-large;
+}
+
+.logo img {
+    width: auto;
+    height: 70px;
+}
+
+/*Boton de inicio de sesión*/
+.btn-login {
+    background: var(--azul);
+    height: 5rem;
+    padding: 0;
+    display: flex;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    overflow: hidden;
+    font-size: 1.6rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-login:hover {
+    background: var(--azul);
+}
+
+.btn-login:active {
+    background: var(--verde);
+}
+
+.btn-login .icono,
+.btn-login .texto {
+    height: 100%;
+    padding: 0 24px;
+    display: inline-flex;
+    align-items: center;
+    color: var(--blanco);
+}
+
+.btn-login .icono {
+    font-size: 2.4rem;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.texto-link {
+    text-decoration: none;
+    color: var(--blanco);
+    cursor: pointer;
+}
+
+.texto-link:hover {
+    color: var(--negro);
+}
+
+.nav-container {
+    background-color: var(--azul);
+}
+
+.nav-container a {
+    color: var(--blanco);
+    cursor: pointer;
+    margin: 5px 10px 5px 10px;
+}
+
+.nav-container a:hover {
+    color: var(--negro);
+}
+
+.session-nav .dropdown-item {
+    font-size: 14px;
+}
+
+.session-nav .dropdown-item:hover {
+    background-color: var(--verde);
+}
+
+.session-nav .dropdown-menu {
+    background-color: var(--azul) !important;
+}
+
+.posicion{
+    position: fixed;
+    align-items: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    left: 0;
+    right: 0;
+}
+
+.posadas-posicion{
+    padding-top: 55px;
+    padding-left: 0px;
+}
+
+.header {
+    position: fixed;
+    display: block;
+    float: none;
+    border-bottom: 1px solid var(--blanco);
+	width:100%;
+    padding: revert;
+}
+
+.header nav {
+	background: var(--azul);
+    text-align: center;
+}
+
+.session {
+    margin: auto;
+    padding: auto;
+}
+
+@media screen and (max-width: 400px){
+    body {
+        font-size: 8px;
+    }
+    .titulo {
+        padding: 0px 0px 0px 20px;
+    }
+    .logo {
+        padding: 0px 0px 0px 20px;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 800px) {
+    body {
+        font-size: 10px;
+    }
+    .titulo {
+        padding: 0px 0px 0px 30px;
+    }
+    .logo {
+        margin-top: 125px;
+    }
+}

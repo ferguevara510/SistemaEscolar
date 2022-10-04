@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Funciones;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,6 +17,10 @@ return new class extends Migration
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->enum('funcion', Funciones::getValues())->nullable();
+            $table->string('titulo', 100);
+            $table->string('descripcion', 500);
+            $table->string('archivo', 250)->nullable();
         });
     }
 

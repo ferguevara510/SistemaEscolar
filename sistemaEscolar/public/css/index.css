@@ -1,0 +1,422 @@
+body {
+    font-size: 14px; /*1rem = 10px*/
+    font-family: 'Open Sans', sans-serif;
+    background: var(--gris-1);
+}
+
+html {
+    font-size: 62.5%;
+}
+
+/*Informacion*/
+#informacion {
+    width: 90vw;
+    margin: 3rem auto;
+}
+
+#informacion .contenedor {
+    position: relative;
+    height: 58rem;
+    border-radius: 2rem;
+    background-image: url(../src/img/index/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0px 0px 15px 0px var(--verde);
+}
+
+#informacion .contenedor .descripcion {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0 0 0 / 70%);
+}
+
+#informacion .contenedor .descripcion h2 {
+    margin: 1rem 0rem;
+    color: var(--gris-2);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#informacion .contenedor .descripcion video {
+    height: 480px;
+    width: 720px;
+    margin: 1rem 0rem;
+    cursor: pointer;
+}
+
+#informacion .contenedor .descripcion .imagen {
+    padding: 5px, 5px, 5px, 5px;
+    content: icon;
+    pointer-events: none;
+}
+/*Slider de Imagenes*/
+#slider {
+    margin: 3rem auto;
+    width: 90vw;
+}
+
+#slider h2 {
+    text-align: center;
+    color: var(--verde);
+}
+
+/*Propiedades de imagenes*/
+#slider .contenedor {
+    position: relative;
+    background: var(--gris-3);
+    width: 100%;
+    min-height: 500px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 2rem;
+    box-shadow: 0px 0px 15px 0px var(--verde);
+}
+  
+#slider .contenedor .imagen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(0%);
+}
+  
+#slider .contenedor .imagen.active {
+    clip-path: circle(150%);
+    transition: 2s;
+}
+  
+#slider .contenedor .imagen img {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/*Navegacion de slider*/
+#slider .contenedor .navegacion {
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+  
+#slider .contenedor:hover .navegacion {
+    opacity: 1;
+}
+  
+#slider .contenedor .navegacion .btn-prev, 
+#slider .contenedor .navegacion .btn-next {
+    z-index: 999;
+    font-size: 2rem;
+    color: var(--negro);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    cursor: pointer;
+}
+  
+#slider .contenedor .navegacion .btn-prev {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+#slider .contenedor .navegacion .btn-next {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+/*Iconos de navegacion*/
+#slider .contenedor .posicion {
+    z-index: 999;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+#slider .contenedor .posicion .icono {
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.5);
+    width: 2rem;
+    height: 1rem;
+    margin: 0 6px;
+    border-radius: 2px;
+    box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
+}
+  
+#slider .contenedor .posicion .icono.active {
+    background: var(--verde);
+}
+
+/*Catalogo*/
+#catalogo {
+    margin: 3rem auto;
+    width: 90vw;
+}
+
+#catalogo h2 {
+    text-align: center;
+    color: var(--verde);
+}
+
+#catalogo .contenedor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+#catalogo .contenedor .apartado {
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem 2rem;
+    box-shadow: 5px 5px 18px 2px rgba(120,120,120,0.59);
+    user-select: none;
+    position: absolute;
+}
+
+#catalogo .contenedor .apartado:hover {
+    cursor: pointer;
+    border-style: solid;
+    border-width: .3rem;
+    border-color: rgb(31, 31, 31)
+}
+
+#catalogo .contenedor .ultimo {
+    background-color: var(--gris-3);
+    grid-column: 1/3;
+}
+
+/*Catalogo-Imagenes*/
+#catalogo .contenedor .apartado .producto {
+    padding: 1rem;
+    border-style: solid;
+    border-color: var(--gris-3);
+    border-radius: 1rem;
+    box-shadow: -2px -2px 13px 0px rgba(0,0,0,0.75);
+}
+
+#catalogo .contenedor .apartado .producto img {
+    width: 12.8rem;
+    height: 12.8rem;
+    pointer-events: none;
+}
+
+#catalogo .contenedor .apartado .logo {
+    width: 12.8rem;
+    height: 12.8rem;
+    pointer-events: none;
+    box-shadow: -2px -2px 13px 0px rgba(0,0,0,0.75);
+    border-radius: 189rem;
+    background-color: var(--gris-3);
+}
+
+/*Catalogo-Textos*/
+#catalogo .contenedor .apartado .texto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#catalogo .contenedor .apartado .texto .titulo {
+    text-transform: uppercase;
+}
+
+#catalogo .contenedor .apartado .texto .subtitulo {
+    font-weight: normal;
+    text-transform: capitalize;
+}
+
+.h1-color{
+    color: var(--gris-1);
+}
+
+.h1-color-titulos{
+    color: var(--verde);
+    text-align: center;
+}
+
+.contenedor-catalogo {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.catalogo {
+    display: flex;
+    flex-flow: nowrap;
+    justify-content: space-between;
+    height: 155px;
+    width: 100%;
+    box-sizing: content-box;
+    background: var(--gris-3);
+    box-shadow: 0px 0px 15px 0px var(--verde); 
+    border-radius: 30px;
+    margin: 5px 5px 15px 5px;
+}
+
+.catalogo > div {
+    width: 35%;
+}
+
+.catalogo-imagen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.catalogo-imagen > img {
+    width: 12.8rem;
+    height: 12.8rem;
+}
+
+.catalogo-icono {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.catalogo-icono > img {
+    width: 12.8rem;
+    height: 12.8rem;
+    border-radius: 189rem;
+}
+
+.catalogo-texto {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.catalogo-medio {
+    display: flex;
+    flex-flow: nowrap;
+    justify-content: space-between;
+    height: 155px;
+    width: 30%;
+    box-sizing: content-box;
+    background: var(--gris-2);
+    box-shadow: 0px 0px 15px 0px var(--verde);
+    border-radius: 30px;
+    margin: 10px 15px 25px 25px;
+}
+
+.catalogo-medio > div {
+    width: 35%;
+}
+
+.iframe {
+    width: 760px;
+    height: 515px;
+}
+
+@media screen and (max-width: 400px){
+    body {
+        font-size: 8px;
+    }
+    #slider .contenedor {
+        width: 100%;
+        min-height: 200px;
+        box-shadow: 0px 0px 15px 0px var(--verde);
+    }
+    #slider .contenedor .imagen img {
+        height: 200px;    
+    }
+    #slider .contenedor .navegacion {
+        height: 200px;
+    }
+    .h1-color{
+        font-size: 16px;
+    }
+    .h1-color-titulos{
+        padding-bottom: 10px;
+    }
+    .catalogo {
+        height: 120px;
+    }
+    .catalogo-texto {
+        font-size: 10px;
+    }
+    .catalogo-imagen > img {
+        width: 10rem;
+        height: 10rem;
+    }
+    .catalogo-icono > img {
+        width: 10rem;
+        height: 10rem;
+    }
+    .catalogo-medio {
+        height: 120px;
+        width: 100%;
+        margin: 5px 5px 15px 5px;
+    }
+    .iframe {
+        width: 250px;
+        height: 180px;
+    }
+    #informacion .contenedor {
+        height: 250px;
+    }
+    #informacion .contenedor .descripcion {
+        height: 250px;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 800px) {
+    body {
+        font-size: 10px;
+    }
+    #slider .contenedor {
+        width: 100%;
+        min-height: 300px;
+        box-shadow: 0px 0px 15px 0px var(--verde);
+    }
+    #slider .contenedor .imagen img {
+        height: 300px;    
+    }
+    #slider .contenedor .navegacion {
+        height: 300px;
+    }
+    .h1-color{
+        font-size: 16px;
+    }
+    .h1-color-titulos{
+        padding-bottom: 10px;
+    }
+    .catalogo {
+        height: 130px;
+    }
+    .catalogo-texto {
+        font-size: 12px;
+    }
+    .catalogo-imagen > img {
+        width: 11rem;
+        height: 11rem;
+    }
+    .catalogo-icono > img {
+        width: 11rem;
+        height: 11rem;
+    }
+    .catalogo-medio {
+        height: 130px;
+        width: 100%;
+        margin: 5px 5px 15px 5px;
+    }
+    .iframe {
+        width: 350px;
+        height: 250px;
+    }
+    #informacion .contenedor {
+        height: 350px;
+    }
+    #informacion .contenedor .descripcion {
+        height: 350px;
+    }
+}
