@@ -1,0 +1,40 @@
+body {
+    font-size: 14px; /*1rem = 10px*/
+    font-family: 'Open Sans', sans-serif;
+    background: var(--gris-1);
+}
+
+.titulo{
+    padding: 0px 0px 0px 145px;
+    color: var(--azul);
+    font-size: 16px;
+}
+
+.seccion-calculadora{
+    width: 80%;
+    margin: auto;
+    position: relative !important;
+}
+
+.seccion-calculadora #ggb-element{
+    width: auto !important;
+    height: auto !important;
+}
+
+@media screen and (max-width: 400px){
+    body {
+        font-size: 8px;
+    }
+    .titulo {
+        padding: 0px 0px 0px 20px;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 800px){
+    body {
+        font-size: 10px;
+    }
+    .titulo {
+        padding: 0px 0px 0px 30px;
+    }
+}
