@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\Funciones;
+use App\Enums\Funcion;
 use App\Models\Material;
 use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Http\Request;
@@ -10,17 +10,17 @@ use Illuminate\Http\Request;
 class MaterialController extends Controller
 {
     public function __construct (){
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function vistaRegistrarMaterial (){
-        $enumLicenciatura = Material::getValues();
-        return view('estudiante.registrar_estudiante', compact('enumLicencitura'));
+        $enumFuncion= Material::getValues();
+        return view('material.registrar_material', compact('enumFuncion'));
     }
 
     public function registrarMaterial(Request $request){
         $nuevoMaterial = $request->validate([
-            'funcion' => ['required', new EnumValue(Funciones::class)],
+            'funcion' => ['required', new EnumValue(Funcion::class)],
             'titulo' => 'required',
             'descripcion' => 'required',
             'archivo' => 'required|mimes:pdf',
@@ -30,29 +30,35 @@ class MaterialController extends Controller
     }
 
     public function consultarListaMaterial (Request $request){
-        $material = [];
+        $materials = [];
         $busqueda = $request->input('busqueda');
         if ($busqueda){
-            $material = Material::query()->where('funcion', 'LIKE', "%{$busqueda}%")->get();
+            $materials = Material::query()->where('funcion', 'LIKE', "%{$busqueda}%")->get();
         }
         else {
-            $material = Material::all();
+            $materials = Material::all();
         }
-        return view('material.consultar_material', compact('material'));
+        return view('material.consultar_material', compact('materials'));
     }
 
     public function modificarMaterial (Request $request, $material){
         $request->validate([
-            'funcion' => ['required', new EnumValue(Funciones::class)],
+            'titulo' => 'required',
+            'descripcion' => 'required',
+            'archivo' => 'required|mimes:pdf',
+            'funcion' => ['required', new EnumValue(Funcion::class)],
         ]);
         $material= Material::find($material);
+        $material->titulo = $request->get('titulo');
+        $material->descripcion = $request->get('descripcion');
+        $material->archivo = $request->get('archivo');
         $material->funcion = $request->get('funcion');
         $material->update();
         return redirect('/consultarMaterial')->with('success','Material modificado');
     }
 
-    public function mostrarEstudiante (Material $estudiante){
-        $enumFuncion = Funciones::getValues();
+    public function mostrarMaterial (Material $material){
+        $enumFuncion = Funcion::getValues();
         return view('material.modificar_material', compact('material','enumFuncion'));
     }
 

@@ -41,10 +41,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($profesores as $profesor)
+            @foreach ($profesors as $profesor)
             <tr class="tabla-consultar">
-                <td>{{$profesor->nombreEstudiante}}</td>
-                <td>{{$profesor->apellidosEstudiante}}</td>
+                <td>{{$profesor->nombreProfesor}}</td>
+                <td>{{$profesor->apellidosProfesor}}</td>
                 <td>{{$profesor->noPersonal}}</td>
                 <td>{{$profesor->correoInstitucional}}</td>
                 <td>{{$profesor->licenciatura}}</td>

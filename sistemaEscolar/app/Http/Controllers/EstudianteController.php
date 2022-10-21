@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class EstudianteController extends Controller
 {
     public function __construct (){
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function vistaRegistrarEstudiante (){
@@ -24,7 +24,31 @@ class EstudianteController extends Controller
         return view('estudiante.registrar_estudiante', compact('enumLicenciatura','enumEntidad','enumAreaAcademica','enumRegion'));
     }
 
+    public function vistaRegistrarEstudianteProfesor (){
+        $enumLicenciatura = Licenciatura::getValues();
+        $enumEntidad = Entidad::getValues();
+        $enumAreaAcademica = AreaAcademica::getValues();
+        $enumRegion = Region::getValues();
+        return view('estudiante.registrar_estudiante_profesor', compact('enumLicenciatura','enumEntidad','enumAreaAcademica','enumRegion'));
+    }
+
     public function registrarEstudiante (Request $request){
+        $nuevoEstudiante = $request->validate([
+            'licenciatura' => ['required', new EnumValue(Licenciatura::class)],
+            'entidad' => ['required', new EnumValue(Entidad::class)],
+            'areaAcademica' => ['required', new EnumValue(AreaAcademica::class)],
+            'region' => ['required', new EnumValue(Region::class)],
+            'nombreEstudiante' => 'required',
+            'apellidosEstudiante' => 'required',
+            'matricula' => 'required',
+            'correoInstitucional' => 'required',
+            'contrasena' => 'required',
+        ]);
+        Estudiante::create($nuevoEstudiante);
+        return back()->with('success','Estudiante creado');
+    }
+
+    public function registrarEstudianteProfesor (Request $request){
         $nuevoEstudiante = $request->validate([
             'licenciatura' => ['required', new EnumValue(Licenciatura::class)],
             'entidad' => ['required', new EnumValue(Entidad::class)],
@@ -61,17 +85,53 @@ class EstudianteController extends Controller
         else {
             $estudiantes = Estudiante::all();
         }
-        return view('estudiante.consultar_estudiantes_profesor', compact('estudiantes'));
+        return view('estudiante.consultar_estudiante_profesor', compact('estudiantes'));
     }
 
     public function modificarEstudiante (Request $request, $estudiante){
         $request->validate([
+            'nombreEstudiante' => 'required',
+            'apellidosEstudiante' => 'required',
+            'matricula' => 'required',
+            'correoInstitucional' => 'required',
+            'contrasena' => 'required',
             'licenciatura' => ['required', new EnumValue(Licenciatura::class)],
             'entidad' => ['required', new EnumValue(Entidad::class)],
             'areaAcademica' => ['required', new EnumValue(AreaAcademica::class)],
             'region' => ['required', new EnumValue(Region::class)],
         ]);
         $estudiante= Estudiante::find($estudiante);
+        $estudiante->nombreEstudiante = $request->get('nombreEstudiante');
+        $estudiante->apellidosEstudiante = $request->get('apellidosEstudiante');
+        $estudiante->matricula = $request->get('matricula');
+        $estudiante->correoInstitucional = $request->get('correoInstitucional');
+        $estudiante->contrasena = $request->get('contrasena');
+        $estudiante->licenciatura = $request->get('licenciatura');
+        $estudiante->entidad = $request->get('entidad');
+        $estudiante->areaAcademica = $request->get('areaAcademica');
+        $estudiante->region = $request->get('region');
+        $estudiante->update();
+        return redirect('/consultarEstudiante')->with('success','Estudiante modificado');
+    }
+
+    public function modificarEstudianteProfesor (Request $request, $estudiante){
+        $request->validate([
+            'nombreEstudiante' => 'required',
+            'apellidosEstudiante' => 'required',
+            'matricula' => 'required',
+            'correoInstitucional' => 'required',
+            'contrasena' => 'required',
+            'licenciatura' => ['required', new EnumValue(Licenciatura::class)],
+            'entidad' => ['required', new EnumValue(Entidad::class)],
+            'areaAcademica' => ['required', new EnumValue(AreaAcademica::class)],
+            'region' => ['required', new EnumValue(Region::class)],
+        ]);
+        $estudiante= Estudiante::find($estudiante);
+        $estudiante->nombreEstudiante = $request->get('nombreEstudiante');
+        $estudiante->apellidosEstudiante = $request->get('apellidosEstudiante');
+        $estudiante->matricula = $request->get('matricula');
+        $estudiante->correoInstitucional = $request->get('correoInstitucional');
+        $estudiante->contrasena = $request->get('contrasena');
         $estudiante->licenciatura = $request->get('licenciatura');
         $estudiante->entidad = $request->get('entidad');
         $estudiante->areaAcademica = $request->get('areaAcademica');
@@ -88,7 +148,20 @@ class EstudianteController extends Controller
         return view('estudiante.modificar_estudiante', compact('estudiante','enumLicenciatura','enumEntidad','enumAreaAcademica','enumRegion'));
     }
 
+    public function mostrarEstudianteProfesor (Estudiante $estudiante){
+        $enumLicenciatura = Licenciatura::getValues();
+        $enumEntidad = Entidad::getValues();
+        $enumAreaAcademica = AreaAcademica::getValues();
+        $enumRegion = Region::getValues();
+        return view('estudiante.modificar_estudiante_profesor', compact('estudiante','enumLicenciatura','enumEntidad','enumAreaAcademica','enumRegion'));
+    }
+
     public function eliminarEstudiante (Estudiante $estudiante){
+        $estudiante->delete();
+        return redirect('/consultarEstudiante')->with('success','Estudiante eliminado');
+    }
+
+    public function eliminarEstudianteProfesor (Estudiante $estudiante){
         $estudiante->delete();
         return redirect('/consultarEstudiante')->with('success','Estudiante eliminado');
     }

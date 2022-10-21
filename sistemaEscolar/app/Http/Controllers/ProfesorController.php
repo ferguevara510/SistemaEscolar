@@ -41,25 +41,35 @@ class ProfesorController extends Controller
     }
 
     public function consultarListaProfesor (Request $request){
-        $profesores = [];
+        $profesors = [];
         $busqueda = $request->input('busqueda');
         if ($busqueda){
-            $profesores = Profesor::query()->where('nombreProfesor', 'LIKE', "%{$busqueda}%")->get();
+            $profesors = Profesor::query()->where('nombreProfesor', 'LIKE', "%{$busqueda}%")->get();
         }
         else {
-            $profesores = Profesor::all();
+            $profesors = Profesor::all();
         }
-        return view('profesor.consultar_profesor', compact('profesores'));
+        return view('profesor.consultar_profesor', compact('profesors'));
     }
 
     public function modificarProfesor (Request $request, $profesor){
         $request->validate([
+            'nombreProfesor' => 'required',
+            'apellidosProfesor' => 'required',
+            'noPersonal' => 'required',
+            'correoInstitucional' => 'required',
+            'contrasena' => 'required',
             'licenciatura' => ['required', new EnumValue(Licenciatura::class)],
             'entidad' => ['required', new EnumValue(Entidad::class)],
             'areaAcademica' => ['required', new EnumValue(AreaAcademica::class)],
             'region' => ['required', new EnumValue(Region::class)],
         ]);
         $profesor= Profesor::find($profesor);
+        $profesor->nombreProfesor = $request->get('nombreProfesor');
+        $profesor->apellidosProfesor= $request->get('apellidosProfesor');
+        $profesor->noPersonal = $request->get('noPersonal');
+        $profesor->correoInstitucional = $request->get('correoInstitucional');
+        $profesor->contrasena = $request->get('contrasena');
         $profesor->licenciatura = $request->get('licenciatura');
         $profesor->entidad = $request->get('entidad');
         $profesor->areaAcademica = $request->get('areaAcademica');

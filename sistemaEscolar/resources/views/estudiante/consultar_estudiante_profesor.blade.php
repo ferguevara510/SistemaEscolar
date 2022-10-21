@@ -21,6 +21,9 @@
         </form>
     </section>
 </div>
+<div class="btn-registrar">
+    <button type="button" id="registrarEstudiante" class="btn-opcion"><a class="texto-link" href="{{ route('estudianteProfIndex') }}">Registrar</a></button>
+</div>
 <div class="contenedor-tarjetas">
     <table class="table tabla-consultar">
         <thead>
@@ -33,6 +36,8 @@
                 <th scope="col">Entidad</th>
                 <th scope="col">Area Academica</th>
                 <th scope="col">Region</th>
+                <th scope="col">Modificar</th>
+                <th scope="col">Eliminar</th>
             </tr>
         </thead>
         <tbody>
@@ -46,6 +51,14 @@
                 <td>{{$estudiante->entidad}}</td>
                 <td>{{$estudiante->areaAcademica}}</td>
                 <td>{{$estudiante->region}}</td>
+                <td><button type="button" id="modificarEstudiante" class="btn-opcion"><a class="texto-link" href="{{ route('estudianteProfShow', $estudiante->id) }}">Modificar</a></button></td>
+                <td>
+                    <form method="post" action="{{ route('estudianteProfDelete', $estudiante->id) }}">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" id="eliminarEstudiante" class="btn-opcion btn-opcion-color">Eliminar</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>
