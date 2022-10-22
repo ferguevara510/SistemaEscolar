@@ -25,6 +25,9 @@ class MaterialController extends Controller
             'descripcion' => 'required',
             'archivo' => 'required|mimes:pdf',
         ]);
+        $fileName = time().".".$request->archivo->extension();
+        $request->archivo->move(public_path('archivo'),$fileName);
+        $nuevoMaterial['archivo'] = $fileName;
         Material::create($nuevoMaterial);
         return back()->with('success','Material creado');
     }
@@ -51,8 +54,12 @@ class MaterialController extends Controller
         $material= Material::find($material);
         $material->titulo = $request->get('titulo');
         $material->descripcion = $request->get('descripcion');
-        $material->archivo = $request->get('archivo');
         $material->funcion = $request->get('funcion');
+        if(isset($request->archivo)){
+            $fileName = time().".".$request->archivo->extension();
+            $request->archivo->move(public_path('archivo'),$fileName);
+            $material->archivo = $fileName;
+        }
         $material->update();
         return redirect('/consultarMaterial')->with('success','Material modificado');
     }

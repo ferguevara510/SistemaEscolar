@@ -1,13 +1,20 @@
+@extends('layouts.footer')
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<link href="{{ asset('/css/registro.css') }}" rel="stylesheet">
+
+<div>
+    <p class="titulo">SEF > Inicio de sesión</p>
+</div>
+
+<div class="">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="color-tarjeta">
 
-                <div class="card-body">
+                <div class="card-body form-group form-registro">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

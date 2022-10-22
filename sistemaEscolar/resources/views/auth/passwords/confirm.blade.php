@@ -1,13 +1,20 @@
+@extends('layouts.footer')
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<link href="{{ asset('/css/registro.css') }}" rel="stylesheet">
+
+<div>
+    <p class="titulo">SEF > Confirmación</p>
+</div>
+
+<div class="">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Confirm Password') }}</div>
-
-                <div class="card-body">
+            <div class="color-tarjeta">
+                
+                <div class="card-body form-group form-registro">
+                    
                     {{ __('Please confirm your password before continuing.') }}
 
                     <form method="POST" action="{{ route('password.confirm') }}">

@@ -1,3 +1,4 @@
+@extends('layouts.footer')
 @extends('layouts.app')
 
 @section('content')
@@ -40,7 +41,7 @@
                 <td>{{$material->funcion}}</td>
                 <td>{{$material->titulo}}</td>
                 <td>{{$material->descripcion}}</td>
-                <td>{{$material->archivo}}</td>
+                <td class="tabla-consultar"></td>
                 <td><button type="button" id="modificarMaterial" class="btn-opcion"><a class="texto-link" href="{{ route('materialShow', $material->id) }}">Modificar</a></button></td>
                 <td>
                     <form method="post" action="{{ route('materialDelete', $material->id) }}">
