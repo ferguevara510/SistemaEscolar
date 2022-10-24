@@ -1,5 +1,5 @@
 @extends('layouts.footer')
-@extends('layouts.menus.app')
+@extends('layouts.menus.app_estudiante')
 @section('content')
 
 <head>

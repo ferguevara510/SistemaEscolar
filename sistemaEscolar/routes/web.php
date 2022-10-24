@@ -5,7 +5,6 @@ use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\GeogebraController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\ProfesorController;
-use App\Models\Estudiante;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,15 +23,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/homeProfesor', [App\Http\Controllers\HomeController::class, 'indexProfesor'])->name('homeProfesor');
+Route::get('/homeEstudiante', [App\Http\Controllers\HomeController::class, 'indexEstudiante'])->name('homeEstudiante');
 
 //Geogebra
 Route::get('/geogebra', [GeogebraController::class, 'vistaGeogebra'])->name('geogebra');
 
 //Registros
 //Estudiante
-Route::get('/registrarEstudianteProfesor', [EstudianteController::class, 'vistaRegistrarEstudiante'])->name('estudianteProfIndex');
-Route::post('/registrarEstudianteProfesor', [EstudianteController::class, 'registrarEstudiante'])->name('estudianteProfStorage');
+Route::get('/registrarEstudianteProfesor', [EstudianteController::class, 'vistaRegistrarEstudianteProfesor'])->name('estudianteProfIndex');
+Route::post('/registrarEstudianteProfesor', [EstudianteController::class, 'registrarEstudianteProfesor'])->name('estudianteProfStorage');
 Route::get('/registrarEstudiante', [EstudianteController::class, 'vistaRegistrarEstudiante'])->name('estudianteIndex');
 Route::post('/registrarEstudiante', [EstudianteController::class, 'registrarEstudiante'])->name('estudianteStorage');
 //Profesor
@@ -50,11 +52,12 @@ Route::get('/consultarEstudiante', [EstudianteController::class, 'consultarLista
 Route::get('/consultarProfesor', [ProfesorController::class, 'consultarListaProfesor'])->name('profesorList');
 //Material
 Route::get('/consultarMaterial', [MaterialController::class, 'consultarListaMaterial'])->name('materialList');
+Route::get('/consultarMaterialEstudiante', [MaterialController::class, 'consultarListaMaterialEstudiante'])->name('materialEstList');
 
 //Modificaciones
 //Estudiante
-Route::get('/modificarEstudianteProfesor/{estudiante}', [EstudianteController::class, 'mostrarEstudiante'])->name('estudianteProfShow');
-Route::put('/modificarEstudianteProfesor/{estudiante}', [EstudianteController::class, 'modificarEstudiante'])->name('estudianteProfEdit');
+Route::get('/modificarEstudianteProfesor/{estudiante}', [EstudianteController::class, 'mostrarEstudianteProfesor'])->name('estudianteProfShow');
+Route::put('/modificarEstudianteProfesor/{estudiante}', [EstudianteController::class, 'modificarEstudianteProfesor'])->name('estudianteProfEdit');
 Route::get('/modificarEstudiante/{estudiante}', [EstudianteController::class, 'mostrarEstudiante'])->name('estudianteShow');
 Route::put('/modificarEstudiante/{estudiante}', [EstudianteController::class, 'modificarEstudiante'])->name('estudianteEdit');
 //Profesor
@@ -66,7 +69,7 @@ Route::put('/modificarMaterial/{material}', [MaterialController::class, 'modific
 
 //Eliminaciones
 //Estudiante
-Route::delete('/eliminarEstudianteProfesor/{estudiante}', [EstudianteController::class, 'eliminarEstudiante'])->name('estudianteProfDelete');
+Route::delete('/eliminarEstudianteProfesor/{estudiante}', [EstudianteController::class, 'eliminarEstudianteProfesor'])->name('estudianteProfDelete');
 Route::delete('/eliminarEstudiante/{estudiante}', [EstudianteController::class, 'eliminarEstudiante'])->name('estudianteDelete');
 //Profesor
 Route::delete('/eliminarProfesor/{profesor}', [ProfesorController::class, 'eliminarProfesor'])->name('profesorDelete');

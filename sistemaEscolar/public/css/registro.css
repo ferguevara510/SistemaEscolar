@@ -1,7 +1,9 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+
 body {
-    font-size: 14px; /*1rem = 10px*/
-    font-family: 'Open Sans', sans-serif;
-    background: var(--gris-1);
+  font-size: 14px; /*1rem = 10px*/
+  font-family: 'Open Sans', sans-serif;
+  background: var(--gris-1);
 }
 
 .form-registro{
@@ -56,7 +58,7 @@ body {
 }
 
 .titulo{
-    padding: 0px 0px 0px 145px;
+    padding: 20px 0px 0px 145px;
     color: var(--azul);
     font-size: 16px;
 }

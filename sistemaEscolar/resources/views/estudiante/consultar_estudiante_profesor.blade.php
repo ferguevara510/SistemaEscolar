@@ -1,6 +1,5 @@
 @extends('layouts.footer')
-@extends('layouts.app')
-
+@extends('layouts.menus.app_profesor')
 @section('content')
 
 <link href="{{ asset('/css/consultar.css') }}" rel="stylesheet">

@@ -22,8 +22,13 @@
         <header class="header_posicion">
             <nav class="posicion navbar-expand-md nav-container">
                 <ul class="navbar-nav">
-                    <li><a class="texto-link" href="{{ route('estudianteList') }}">Estudiantes</a></li>
-                    <li><a class="texto-link" href="{{ route('profesorList') }}">Profesores</a></li>
+                    <div>
+                        <a href="{{ route('home') }}">
+                            <img src="{{ asset ('img/SEF.png') }}">
+                        </a>
+                    </div>
+                    <li><a class="texto-link" href="{{ route('estudianteProfList') }}">Estudiantes</a></li>
+                    <li><a class="texto-link" href="{{ route('materialList') }}">Contenido</a></li>
                     <li class="session ">
                         <a id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
@@ -32,9 +37,7 @@
                         <div class="menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault(); 
-                               document.getElementById('logout-form').submit();">
-                                {{ __('Cerrar Sesión') }}
-                            </a>
+                               document.getElementById('logout-form').submit();">Cerrar Sesión</a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
@@ -48,12 +51,6 @@
 
     <nav class="posadas-posicion navbar-expand-md navbar-light">
         <div class="container">
-            <div class="logo">
-                <a href="{{ route('home') }}">
-                    <img src="{{ asset ('img/SEF.png') }}">
-                </a>
-            </div>
-
             <div class="navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     @guest
@@ -64,7 +61,7 @@
                                         <span class="icono">
                                             <ion-icon name="shield-checkmark-outline"></ion-icon>
                                         </span>
-                                        <span class="texto">{{ __('Iniciar Sesión') }}</span>
+                                        <span class="texto">Iniciar Sesión</span>
                                     </button>
                                 </a>
                             </li>

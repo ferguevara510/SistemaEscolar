@@ -40,8 +40,8 @@ class EstudianteController extends Controller
             'region' => ['required', new EnumValue(Region::class)],
             'nombreEstudiante' => 'required',
             'apellidosEstudiante' => 'required',
-            'matricula' => 'required',
-            'correoInstitucional' => 'required',
+            'matricula' => ['required', 'unique:estudiantes'],
+            'correoInstitucional' => ['required', 'email', 'unique:estudiantes'],
             'contrasena' => 'required',
         ]);
         Estudiante::create($nuevoEstudiante);
@@ -56,8 +56,8 @@ class EstudianteController extends Controller
             'region' => ['required', new EnumValue(Region::class)],
             'nombreEstudiante' => 'required',
             'apellidosEstudiante' => 'required',
-            'matricula' => 'required',
-            'correoInstitucional' => 'required',
+            'matricula' => ['required', 'unique:estudiantes'],
+            'correoInstitucional' => ['required', 'email', 'unique:estudiantes'],
             'contrasena' => 'required',
         ]);
         Estudiante::create($nuevoEstudiante);
@@ -92,8 +92,8 @@ class EstudianteController extends Controller
         $request->validate([
             'nombreEstudiante' => 'required',
             'apellidosEstudiante' => 'required',
-            'matricula' => 'required',
-            'correoInstitucional' => 'required',
+            'matricula' => ['required', 'unique:estudiantes'],
+            'correoInstitucional' => ['required', 'email', 'unique:estudiantes'],
             'contrasena' => 'required',
             'licenciatura' => ['required', new EnumValue(Licenciatura::class)],
             'entidad' => ['required', new EnumValue(Entidad::class)],
@@ -118,8 +118,8 @@ class EstudianteController extends Controller
         $request->validate([
             'nombreEstudiante' => 'required',
             'apellidosEstudiante' => 'required',
-            'matricula' => 'required',
-            'correoInstitucional' => 'required',
+            'matricula' => ['required', 'unique:estudiantes'],
+            'correoInstitucional' => ['required', 'email', 'unique:estudiantes'],
             'contrasena' => 'required',
             'licenciatura' => ['required', new EnumValue(Licenciatura::class)],
             'entidad' => ['required', new EnumValue(Entidad::class)],
@@ -137,7 +137,7 @@ class EstudianteController extends Controller
         $estudiante->areaAcademica = $request->get('areaAcademica');
         $estudiante->region = $request->get('region');
         $estudiante->update();
-        return redirect('/consultarEstudiante')->with('success','Estudiante modificado');
+        return redirect('/consultarEstudianteProfesor')->with('success','Estudiante modificado');
     }
 
     public function mostrarEstudiante (Estudiante $estudiante){
@@ -163,6 +163,6 @@ class EstudianteController extends Controller
 
     public function eliminarEstudianteProfesor (Estudiante $estudiante){
         $estudiante->delete();
-        return redirect('/consultarEstudiante')->with('success','Estudiante eliminado');
+        return redirect('/consultarEstudianteProfesor')->with('success','Estudiante eliminado');
     }
 }

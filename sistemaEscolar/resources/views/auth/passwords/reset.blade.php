@@ -1,7 +1,7 @@
 @extends('layouts.footer')
-@extends('layouts.app')
-
+@extends('layouts.menus.app')
 @section('content')
+
 <link href="{{ asset('/css/registro.css') }}" rel="stylesheet">
 
 <div>

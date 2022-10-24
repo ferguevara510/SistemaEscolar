@@ -44,6 +44,18 @@ class MaterialController extends Controller
         return view('material.consultar_material', compact('materials'));
     }
 
+    public function consultarListaMaterialEstudiante (Request $request){
+        $materials = [];
+        $busqueda = $request->input('busqueda');
+        if ($busqueda){
+            $materials = Material::query()->where('funcion', 'LIKE', "%{$busqueda}%")->get();
+        }
+        else {
+            $materials = Material::all();
+        }
+        return view('material.consultar_material_estudiante', compact('materials'));
+    }
+
     public function modificarMaterial (Request $request, $material){
         $request->validate([
             'titulo' => 'required',

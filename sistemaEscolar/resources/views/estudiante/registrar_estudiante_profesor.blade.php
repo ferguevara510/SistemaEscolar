@@ -1,7 +1,7 @@
 @extends('layouts.footer')
-@extends('layouts.app')
-
+@extends('layouts.menus.app_profesor')
 @section('content')
+
 <link href="{{ asset('/css/registro.css') }}" rel="stylesheet">
 
 <div>
@@ -15,13 +15,13 @@
 @endif
 <div class="container-registro mt-5">
 
-    <form action="" method="post" action="action('EstudianteController@registrarEstudiante') ">
+    <form action="" method="post" action="action('EstudianteController@registrarEstudianteProfesor') ">
 
         @csrf
 
         <div class="form-group form-registro">
             <label>Nombre Estudiante</label>
-            <input type="text" class="form-control  $errors->has('nombreEstudinte') ? 'error' : '' " name="nombreEstudiante" id="nombreEstudiante">
+            <input type="text" class="form-control  $errors->has('nombreEstudiante') ? 'error' : '' " name="nombreEstudiante" id="nombreEstudiante">
             @if ($errors->has('nombreEstudiante'))
             <div class="error">
                 {{$errors->first('nombreEstudiante')}}
@@ -31,7 +31,7 @@
 
         <div class="form-group form-registro">
             <label>Apellidos Estudiante</label>
-            <input type="text" class="form-control  $errors->has('apellidosEstudinte') ? 'error' : '' " name="apellidosEstudiante" id="apellidosEstudiante">
+            <input type="text" class="form-control  $errors->has('apellidosEstudiante') ? 'error' : '' " name="apellidosEstudiante" id="apellidosEstudiante">
             @if ($errors->has('apellidosEstudiante'))
             <div class="error">
                 {{$errors->first('apellidosEstudiante')}}

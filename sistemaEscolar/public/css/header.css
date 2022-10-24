@@ -1,8 +1,11 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+
 body {
-    font-size: 14px; /*1rem = 10px*/
-    font-family: 'Open Sans', sans-serif;
-    background: var(--gris-1);
-}
+  font-size: 14px; /*1rem = 10px*/
+  font-family: 'Open Sans', sans-serif;
+  background: var(--gris-1);
+} 
+
 .menu {
     color: #212529;
     text-align: left;

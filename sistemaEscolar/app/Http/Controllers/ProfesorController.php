@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class ProfesorController extends Controller
 {
     public function __construct (){
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function vistaRegistrarProfesor (){
@@ -32,8 +32,8 @@ class ProfesorController extends Controller
             'region' => ['required', new EnumValue(Region::class)],
             'nombreProfesor' => 'required',
             'apellidosProfesor' => 'required',
-            'noPersonal' => 'required',
-            'correoInstitucional' => 'required',
+            'noPersonal' =>  ['required', 'unique:estudiantes'],
+            'correoInstitucional' => ['required', 'email', 'unique:estudiantes'],
             'contrasena' => 'required',
         ]);
         Profesor::create($nuevoProfesor);
@@ -56,8 +56,8 @@ class ProfesorController extends Controller
         $request->validate([
             'nombreProfesor' => 'required',
             'apellidosProfesor' => 'required',
-            'noPersonal' => 'required',
-            'correoInstitucional' => 'required',
+            'noPersonal' =>  ['required', 'unique:estudiantes'],
+            'correoInstitucional' => ['required', 'email', 'unique:estudiantes'],
             'contrasena' => 'required',
             'licenciatura' => ['required', new EnumValue(Licenciatura::class)],
             'entidad' => ['required', new EnumValue(Entidad::class)],

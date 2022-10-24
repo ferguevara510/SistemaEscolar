@@ -1,6 +1,5 @@
 @extends('layouts.footer')
-@extends('layouts.app')
-
+@extends('layouts.menus.app_profesor')
 @section('content')
 
 <link href="{{ asset('/css/consultar.css') }}" rel="stylesheet">
@@ -33,6 +32,8 @@
                 <th scope="col">Titulo</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Archivo</th>
+                <th scope="col">Modificar</th>
+                <th scope="col">Eliminar</th>
             </tr>
         </thead>
         <tbody>
