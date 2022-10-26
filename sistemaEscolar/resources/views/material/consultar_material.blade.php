@@ -17,12 +17,12 @@
     <section>
         <form method="get" action="{{ route('materialList') }}">		    
             <input class="line-search-input" type="search" name="busqueda" placeholder="Titulo de material">		    	
-            <button class="btn-opcion-buscar" type="submit">Buscar</button>
+            <button class="btn-opcion-buscar" type="submit"><a class="texto-link">Buscar 🔍</a></button>
         </form>
     </section>
 </div>
 <div class="btn-registrar">
-    <button type="button" id="registrarMaterial" class="btn-opcion"><a class="texto-link" href="{{ route('materialIndex') }}">Registrar</a></button>
+    <button type="button" id="registrarMaterial" class="btn-opcion"><a class="texto-link" href="{{ route('materialIndex') }}">Registrar ➕</a></button>
 </div>
 <div class="contenedor-tarjetas">
     <table class="table tabla-consultar">
@@ -43,12 +43,12 @@
                 <td>{{$material->titulo}}</td>
                 <td>{{$material->descripcion}}</td>
                 <td class="tabla-consultar"></td>
-                <td><button type="button" id="modificarMaterial" class="btn-opcion"><a class="texto-link" href="{{ route('materialShow', $material->id) }}">Modificar</a></button></td>
+                <td><button type="button" id="modificarMaterial" class="btn-opcion"><a class="texto-link" href="{{ route('materialShow', $material->id) }}">Modificar ✍️</a></button></td>
                 <td>
                     <form method="post" action="{{ route('materialDelete', $material->id) }}">
                         @method('DELETE')
                         @csrf
-                        <button type="submit" id="eliminarMaterial" class="btn-opcion btn-opcion-color">Eliminar</button>
+                        <button type="submit" id="eliminarMaterial" class="btn-opcion btn-opcion-color"><a class="texto-link">Eliminar 🗑️</a></button>
                     </form>
                 </td>
             </tr>

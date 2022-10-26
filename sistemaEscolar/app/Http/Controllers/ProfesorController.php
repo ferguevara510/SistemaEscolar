@@ -32,8 +32,8 @@ class ProfesorController extends Controller
             'region' => ['required', new EnumValue(Region::class)],
             'nombreProfesor' => 'required',
             'apellidosProfesor' => 'required',
-            'noPersonal' =>  ['required', 'unique:estudiantes'],
-            'correoInstitucional' => ['required', 'email', 'unique:estudiantes'],
+            'noPersonal' =>  ['required', 'unique:profesores'],
+            'correoInstitucional' => ['required', 'email', 'unique:profesores'],
             'contrasena' => 'required',
         ]);
         Profesor::create($nuevoProfesor);
@@ -56,8 +56,8 @@ class ProfesorController extends Controller
         $request->validate([
             'nombreProfesor' => 'required',
             'apellidosProfesor' => 'required',
-            'noPersonal' =>  ['required', 'unique:estudiantes'],
-            'correoInstitucional' => ['required', 'email', 'unique:estudiantes'],
+            'noPersonal' =>  ['required', 'unique:profesores'],
+            'correoInstitucional' => ['required', 'email', 'unique:profesores'],
             'contrasena' => 'required',
             'licenciatura' => ['required', new EnumValue(Licenciatura::class)],
             'entidad' => ['required', new EnumValue(Entidad::class)],

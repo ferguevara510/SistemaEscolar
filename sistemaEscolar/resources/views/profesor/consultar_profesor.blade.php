@@ -17,12 +17,12 @@
     <section>
         <form method="get" action="{{ route('profesorList') }}">		    
             <input class="line-search-input" type="search" name="busqueda" placeholder="Nombre profesor">		    	
-            <button class="btn-opcion-buscar" type="submit">Buscar</button>
+            <button class="btn-opcion-buscar" type="submit"><a class="texto-link">Buscar 🔍</a></button>
         </form>
     </section>
 </div>
 <div class="btn-registrar">
-    <button type="button" id="registrarProfesor" class="btn-opcion"><a class="texto-link" href="{{ route('profesorIndex') }}">Registrar</a></button>
+    <button type="button" id="registrarProfesor" class="btn-opcion"><a class="texto-link" href="{{ route('profesorIndex') }}">Registrar ➕</a></button>
 </div>
 <div class="contenedor-tarjetas">
     <table class="table tabla-consultar">
@@ -51,12 +51,12 @@
                 <td>{{$profesor->entidad}}</td>
                 <td>{{$profesor->areaAcademica}}</td>
                 <td>{{$profesor->region}}</td>
-                <td><button type="button" id="modificarProfesor" class="btn-opcion"><a class="texto-link" href="{{ route('profesorShow', $profesor->id) }}">Modificar</a></button></td>
+                <td><button type="button" id="modificarProfesor" class="btn-opcion"><a class="texto-link" href="{{ route('profesorShow', $profesor->id) }}">Modificar ✍️</a></button></td>
                 <td>
                     <form method="post" action="{{ route('profesorDelete', $profesor->id) }}">
                         @method('DELETE')
                         @csrf
-                        <button type="submit" id="eliminarProfesor" class="btn-opcion btn-opcion-color">Eliminar</button>
+                        <button type="submit" id="eliminarProfesor" class="btn-opcion btn-opcion-color"><a class="texto-link">Eliminar 🗑️</a></button>
                     </form>
                 </td>
             </tr>

@@ -8,11 +8,10 @@
     <p class="titulo">SEF > Herramienta de Graficación</p>
 </div>
 
-<div class="line-search">
+<div class="line-search seccion-calculadora" id="ggb-element">
     <section>
         <form method="get" action="{{ route('geogebra') }}"></form>
     </section>
-    <div class="seccion-calculadora" id="ggb-element"></div>
 </div>
 <script src="https://www.geogebra.org/apps/deployggb.js"></script>
 <script>  

@@ -17,7 +17,7 @@
     <section>
         <form method="get" action="{{ route('materialList') }}">		    
             <input class="line-search-input" type="search" name="busqueda" placeholder="Titulo de material">		    	
-            <button class="btn-opcion-buscar" type="submit">Buscar</button>
+            <button class="btn-opcion-buscar" type="submit"><a class="texto-link">Buscar 🔍</a></button>
         </form>
     </section>
 </div>

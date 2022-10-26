@@ -127,7 +127,7 @@
         </div>
 
         <div class="div-btn-submit">
-            <input type="submit" name="send" value="Submit" class="btn-submit">
+            <input type="submit" name="send" value="Registrar ➕" class="btn-opcion btn-opcion-color">
         </div>
     </form>
 </div>

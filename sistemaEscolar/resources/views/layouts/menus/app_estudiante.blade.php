@@ -23,12 +23,12 @@
             <nav class="posicion navbar-expand-md nav-container">
                 <ul class="navbar-nav">
                     <div>
-                        <a href="{{ route('home') }}">
-                            <img src="{{ asset ('img/SEF.png') }}">
-                        </a>
+                        <a class="texto-link" href="{{ route('homeEstudiante') }}">SEF-Inicio 🏠</a>
                     </div>
-                    <li><a class="texto-link" href="{{ route('geogebra') }}">Graficación</a></li>
-                    <li><a class="texto-link" href="{{ route('materialEstList') }}">Contenido</a></li>
+                    <li><a class="texto-link" href="{{ route('geogebra') }}">Graficación 📈</a></li>
+                    <li><a class="texto-link" href="{{ route('materialEstList') }}">Contenido 📚</a></li>
+                    <li><a class="texto-link" href="">Prácticas 🗒️</a></li>
+                    <li><a class="texto-link" href="">Exámenes 📝</a></li>
                     <li class="session ">
                         <a id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}

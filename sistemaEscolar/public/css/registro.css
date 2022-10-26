@@ -12,7 +12,7 @@ body {
 
 .form-registro select,
 .form-registro input{
-    border: 2px solid var(--verde);
+    border: 2px solid var(--azul);
     border-radius: 20px;
     min-width: 10px;
     min-height: 5px;
@@ -65,6 +65,17 @@ body {
 
 .color-tarjeta{
     background: var(--gris-1);
+}
+
+.btn-opcion{
+    background-color: var(--verde);
+    color: var(--negro);
+    border-radius: 15px;
+    padding: 5px 15px 5px 15px;
+}
+
+.btn-opcion-color {
+    background: var(--verde);
 }
 
 @media screen and (max-width: 400px){
