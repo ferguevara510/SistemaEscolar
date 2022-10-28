@@ -43,6 +43,8 @@ Route::post('/registrarProfesor', [ProfesorController::class, 'registrarProfesor
 //Material
 Route::get('/registrarMaterial', [MaterialController::class, 'vistaRegistrarMaterial'])->name('materialIndex');
 Route::post('/registrarMaterial', [MaterialController::class, 'registrarMaterial'])->name('materialStorage');
+//Práctica
+//Exámen
 
 //Consultas
 //Estudiante
@@ -53,6 +55,8 @@ Route::get('/consultarProfesor', [ProfesorController::class, 'consultarListaProf
 //Material
 Route::get('/consultarMaterial', [MaterialController::class, 'consultarListaMaterial'])->name('materialList');
 Route::get('/consultarMaterialEstudiante', [MaterialController::class, 'consultarListaMaterialEstudiante'])->name('materialEstList');
+//Práctica
+//Exámen
 
 //Modificaciones
 //Estudiante
@@ -66,6 +70,8 @@ Route::put('/modificarProfesor/{profesor}', [ProfesorController::class, 'modific
 //Material
 Route::get('/modificarMaterial/{material}', [MaterialController::class, 'mostrarMaterial'])->name('materialShow');
 Route::put('/modificarMaterial/{material}', [MaterialController::class, 'modificarMaterial'])->name('materialEdit');
+//Práctica
+//Exámen
 
 //Eliminaciones
 //Estudiante
@@ -75,3 +81,5 @@ Route::delete('/eliminarEstudiante/{estudiante}', [EstudianteController::class, 
 Route::delete('/eliminarProfesor/{profesor}', [ProfesorController::class, 'eliminarProfesor'])->name('profesorDelete');
 //Material
 Route::delete('/eliminarMaterial/{material}', [MaterialController::class, 'eliminarMaterial'])->name('materialDelete');
+//Práctica
+//Exámen

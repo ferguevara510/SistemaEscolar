@@ -8,7 +8,7 @@ final class Funcion extends Enum
 {
     const Option1 = 'Funciones lineal';
     const Option2 = 'Funciones cuadrática';
-    const Option3 = 'Funciones defibida por intervalos';
+    const Option3 = 'Funciones definida por intervalos';
     const Option4 = 'Funciones combinación de funciones';
     const Option5 = 'Funciones inversas';
 }
