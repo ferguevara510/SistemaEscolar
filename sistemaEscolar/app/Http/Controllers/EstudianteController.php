@@ -6,9 +6,12 @@ use App\Enums\AreaAcademica;
 use App\Enums\Entidad;
 use App\Enums\Licenciatura;
 use App\Enums\Region;
+use App\Enums\TipoUsuario;
 use App\Models\Estudiante;
+use App\Models\User;
 use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class EstudianteController extends Controller
 {
@@ -44,6 +47,14 @@ class EstudianteController extends Controller
             'correoInstitucional' => ['required', 'email', 'unique:estudiantes'],
             'contrasena' => 'required',
         ]);
+        $newUser = [
+            'name' => $nuevoEstudiante['nombreEstudiante'],
+            'email' => $nuevoEstudiante['correoInstitucional'],
+            'password' => Hash::make($nuevoEstudiante['contrasena']),
+            'tipoUsuario' => TipoUsuario::Estudiante,
+        ];
+        $user = User::create($newUser);
+        $nuevoEstudiante['user_id'] = $user->id;
         Estudiante::create($nuevoEstudiante);
         return back()->with('success','Estudiante creado');
     }
@@ -60,6 +71,14 @@ class EstudianteController extends Controller
             'correoInstitucional' => ['required', 'email', 'unique:estudiantes'],
             'contrasena' => 'required',
         ]);
+        $newUser = [
+            'name' => $nuevoEstudiante['nombreEstudiante'],
+            'email' => $nuevoEstudiante['correoInstitucional'],
+            'password' => Hash::make($nuevoEstudiante['contrasena']),
+            'tipoUsuario' => TipoUsuario::Estudiante,
+        ];
+        $user = User::create($newUser);
+        $nuevoEstudiante['user_id'] = $user->id;
         Estudiante::create($nuevoEstudiante);
         return back()->with('success','Estudiante creado');
     }

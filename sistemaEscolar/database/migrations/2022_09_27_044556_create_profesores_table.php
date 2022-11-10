@@ -17,7 +17,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('profesores', function (Blueprint $table) {
+        Schema::create('profesors', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->enum('licenciatura', Licenciatura::getValues())->nullable();
@@ -29,6 +29,9 @@ return new class extends Migration
             $table->string('noPersonal', 10);
             $table->string('correoInstitucional', 150);
             $table->string('contrasena', 16);
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -39,6 +42,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profesores');
+        Schema::dropIfExists('profesors');
     }
 };

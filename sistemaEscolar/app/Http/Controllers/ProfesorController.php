@@ -6,9 +6,12 @@ use App\Enums\AreaAcademica;
 use App\Enums\Entidad;
 use App\Enums\Licenciatura;
 use App\Enums\Region;
+use App\Enums\TipoUsuario;
 use App\Models\Profesor;
+use App\Models\User;
 use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfesorController extends Controller
 {
@@ -36,6 +39,14 @@ class ProfesorController extends Controller
             'correoInstitucional' => ['required', 'email', 'unique:profesores'],
             'contrasena' => 'required',
         ]);
+        $newUser = [
+            'name' => $nuevoProfesor['nombreProfesor'],
+            'email' => $nuevoProfesor['correoInstitucional'],
+            'password' => Hash::make($nuevoProfesor['contrasena']),
+            'tipoUsuario' => TipoUsuario::Profesor,
+        ];
+        $user = User::create($newUser);
+        $nuevoProfesor['user_id'] = $user->id;
         Profesor::create($nuevoProfesor);
         return back()->with('success','Profesor creado');
     }
