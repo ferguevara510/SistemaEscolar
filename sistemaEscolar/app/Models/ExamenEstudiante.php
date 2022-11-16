@@ -9,5 +9,9 @@ class ExamenEstudiante extends Model
 {
     use HasFactory;
 
+    public function respuesta(){
+        return $this->belongsTo('App\Models\Respuesta');
+    }
+
     public $fillable=['pregunta_id','respuesta_id','examen_id','estudiante_id'];
 }

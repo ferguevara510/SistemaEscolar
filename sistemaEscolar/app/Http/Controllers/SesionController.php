@@ -25,7 +25,7 @@ class SesionController extends Controller
                     break;
                 case TipoUsuario::Estudiante:
                     Auth::guard('estudiante')->login($user);
-                    return redirect()->route('indexEstudiante');
+                    return redirect()->route('homeEstudiante');
                     break;
                 case TipoUsuario::Profesor:
                     Auth::guard('profesor')->login($user);

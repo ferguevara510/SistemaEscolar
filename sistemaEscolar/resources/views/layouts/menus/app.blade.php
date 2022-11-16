@@ -21,7 +21,7 @@
     @auth
         <header class="header_posicion">
             <nav class="posicion navbar-expand-md nav-container">
-                <ul class="menu-formato">
+                <ul class="navbar-nav">
                     <div>
                         <a class="texto-link" href="{{ route('home') }}">SEF-Inicio 🏠</a>
                     </div>

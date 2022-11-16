@@ -15,7 +15,7 @@
 @endif
 <div class="container-registro mt-5">
 
-    <form action="" method="post" action="action('ContenidoController@registrarContenido')">
+    <form method="post" action="{{route('contenidoIndex')}}" enctype="multipart/form-data">
 
         @csrf
 
@@ -55,7 +55,7 @@
 
         <div class="form-group form-registro">
             <label>Archivo</label>
-            <input type="text" class="form-control  $errors->has('archivo') ? 'error' : '' " name="archivo" id="archivo">
+            <input type="file" class="form-control  {{$errors->has('archivo') ? 'error' : ''}} " name="archivo" id="archivo" accept="application/pdf">
             @if ($errors->has('archivo'))
             <div class="error">
                 {{$errors->first('archivo')}}

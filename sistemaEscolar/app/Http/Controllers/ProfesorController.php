@@ -35,10 +35,16 @@ class ProfesorController extends Controller
             'region' => ['required', new EnumValue(Region::class)],
             'nombreProfesor' => 'required',
             'apellidosProfesor' => 'required',
-            'noPersonal' =>  ['required', 'unique:profesores'],
-            'correoInstitucional' => ['required', 'email', 'unique:profesores'],
+            'noPersonal' =>  ['required', 'unique:profesors'],
+            'correoInstitucional' => ['required', 'email', 'unique:profesors'],
             'contrasena' => 'required',
         ]);
+
+        $usuarioExistente = User::query()->where('email','=',$nuevoProfesor['correoInstitucional'])->first();
+        if($usuarioExistente){
+            return back()->with('error','El correo ya esta ocupado');
+        }
+
         $newUser = [
             'name' => $nuevoProfesor['nombreProfesor'],
             'email' => $nuevoProfesor['correoInstitucional'],
@@ -67,15 +73,25 @@ class ProfesorController extends Controller
         $request->validate([
             'nombreProfesor' => 'required',
             'apellidosProfesor' => 'required',
-            'noPersonal' =>  ['required', 'unique:profesores'],
-            'correoInstitucional' => ['required', 'email', 'unique:profesores'],
+            'noPersonal' =>  ['required', 'unique:profesors'],
+            'correoInstitucional' => ['required', 'email', 'unique:profesors'],
             'contrasena' => 'required',
             'licenciatura' => ['required', new EnumValue(Licenciatura::class)],
             'entidad' => ['required', new EnumValue(Entidad::class)],
             'areaAcademica' => ['required', new EnumValue(AreaAcademica::class)],
             'region' => ['required', new EnumValue(Region::class)],
         ]);
+
         $profesor= Profesor::find($profesor);
+        $usuarioExistente = User::query()->where('email','=',$request->get('correoInstitucional'))->where('id', '!=', $profesor->user_id)->first();
+        if($usuarioExistente){
+            return back()->with('error','El correo ya esta ocupado');
+        }
+
+        $usuario = User::find($profesor->user_id);
+        $usuario->name = $request->get('nombreEstudiante');
+        $usuario->email = $request->get('correoInstitucional');
+
         $profesor->nombreProfesor = $request->get('nombreProfesor');
         $profesor->apellidosProfesor= $request->get('apellidosProfesor');
         $profesor->noPersonal = $request->get('noPersonal');

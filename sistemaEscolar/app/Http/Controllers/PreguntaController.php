@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class PreguntaController extends Controller
 {
     public function __construct (){
-        
+        $this->middleware('auth:profesor');
     }
 
     public function vistaRegistrarPregunta($examenId){

@@ -47,6 +47,10 @@ class EstudianteController extends Controller
             'correoInstitucional' => ['required', 'email', 'unique:estudiantes'],
             'contrasena' => 'required',
         ]);
+        $usuarioExistente = User::query()->where('email','=',$nuevoEstudiante['correoInstitucional'])->first();
+        if($usuarioExistente){
+            return back()->with('error','El correo ya esta ocupado');
+        }
         $newUser = [
             'name' => $nuevoEstudiante['nombreEstudiante'],
             'email' => $nuevoEstudiante['correoInstitucional'],
@@ -119,7 +123,17 @@ class EstudianteController extends Controller
             'areaAcademica' => ['required', new EnumValue(AreaAcademica::class)],
             'region' => ['required', new EnumValue(Region::class)],
         ]);
+
         $estudiante= Estudiante::find($estudiante);
+        $usuarioExistente = User::query()->where('email','=',$request->get('correoInstitucional'))->where('id', '!=', $estudiante->user_id)->first();
+        if($usuarioExistente){
+            return back()->with('error','El correo ya esta ocupado');
+        }
+
+        $usuario = User::find($estudiante->user_id);
+        $usuario->name = $request->get('nombreEstudiante');
+        $usuario->email = $request->get('correoInstitucional');
+
         $estudiante->nombreEstudiante = $request->get('nombreEstudiante');
         $estudiante->apellidosEstudiante = $request->get('apellidosEstudiante');
         $estudiante->matricula = $request->get('matricula');

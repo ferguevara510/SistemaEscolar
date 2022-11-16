@@ -17,5 +17,5 @@ class Profesor extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public $fillable=['nombreProfesor','apellidosProfesor','noPersonal','correoInstitucional','contrasena','licenciatura','entidad','areaAcademica','region'];
+    public $fillable=['nombreProfesor','apellidosProfesor','noPersonal','correoInstitucional','contrasena','licenciatura','entidad','areaAcademica','region','user_id'];
 }

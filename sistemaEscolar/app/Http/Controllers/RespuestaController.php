@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class RespuestaController extends Controller
 {
     public function __construct (){
-        
+        $this->middleware('auth:profesor');
     }
     
     public function registrarRespuesta(Request $request){
@@ -32,6 +32,6 @@ class RespuestaController extends Controller
         Respuesta::where('pregunta_id',$respuesta->pregunta_id)->update(['esCorrecto' => false]);
         $respuesta->esCorrecto = true;
         $respuesta->update();
-        return redirect()->route('preguntaShow',$respuesta->pregunta_id)->with('success','Respuesta eliminada');
+        return redirect()->route('preguntaShow',$respuesta->pregunta_id)->with('success','Respuesta marcada como correcta');
     }
 }

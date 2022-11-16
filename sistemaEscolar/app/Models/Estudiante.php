@@ -17,5 +17,5 @@ class Estudiante extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public $fillable=['nombreEstudiante','apellidosEstudiante','matricula','correoInstitucional','contrasena','licenciatura','entidad','areaAcademica','region'];
+    public $fillable=['nombreEstudiante','apellidosEstudiante','matricula','correoInstitucional','contrasena','licenciatura','entidad','areaAcademica','region','user_id'];
 }

@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 class ContenidoController extends Controller
 {
     public function __construct (){
-        $this->middleware('auth');
     }
 
     public function vistaRegistrarContenido (){

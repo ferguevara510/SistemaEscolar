@@ -42,7 +42,7 @@
                 <td>{{$contenido->funcion}}</td>
                 <td>{{$contenido->titulo}}</td>
                 <td>{{$contenido->descripcion}}</td>
-                <td class="tabla-consultar"></td>
+                <td><a target="_blank" href="{{ asset('/archivo/'.$contenido->archivo) }}">{{$contenido->archivo}}</a></td>
                 <td><button type="button" id="modificarContenido" class="btn-opcion"><a class="texto-link" href="{{ route('contenidoShow', $contenido->id) }}">Modificar ✍️</a></button></td>
                 <td>
                     <form method="post" action="{{ route('contenidoDelete', $contenido->id) }}">
