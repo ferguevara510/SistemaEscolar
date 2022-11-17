@@ -37,7 +37,7 @@
                 <td>{{$contenido->funcion}}</td>
                 <td>{{$contenido->titulo}}</td>
                 <td>{{$contenido->descripcion}}</td>
-                <td class="tabla-consultar"></td>
+                <td><a target="_blank" href="{{ asset('/archivo/'.$contenido->archivo) }}">{{$contenido->archivo}}</a></td>
             </tr>
             @endforeach
         </tbody>

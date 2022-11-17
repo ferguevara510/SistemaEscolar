@@ -12,6 +12,9 @@
 @if ($message = Session::get('success'))
     <div class="alert alert-success">
         <p>{{ $message }}</p>
+        <div class="div-btn-submit">
+            <button type="button" class="btn-opcion"><a class="texto-link" href="{{ route('examenShow', $pregunta->examen_id) }}">Preguntas 🗒️</a></button>
+        </div>
     </div>
 @endif
 <div class="container-registro mt-5">

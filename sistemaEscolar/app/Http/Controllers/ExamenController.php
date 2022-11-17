@@ -30,8 +30,8 @@ class ExamenController extends Controller
             'numeroPreguntas' => 'required',
             'profesor_id' => 'required',
         ]);
-        Examen::create($nuevoExamen);
-        return back()->with('success','Estudiante creado');
+        $examen = Examen::create($nuevoExamen);
+        return redirect()->route('examenShow',$examen->id)->with('success','Estudiante creado');
     }
 
     public function consultarExamenes(Request $request){

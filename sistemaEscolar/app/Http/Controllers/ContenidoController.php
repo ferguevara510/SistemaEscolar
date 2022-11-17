@@ -59,7 +59,7 @@ class ContenidoController extends Controller
         $request->validate([
             'titulo' => 'required',
             'descripcion' => 'required',
-            'archivo' => 'required|mimes:pdf',
+            'archivo' => 'mimes:pdf',
             'funcion' => ['required', new EnumValue(Funcion::class)],
         ]);
         $contenido= Contenido::find($contenido);

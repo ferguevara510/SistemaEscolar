@@ -62,7 +62,7 @@
 
         <div class="form-group form-registro">
             <label>Contraseña Profesor</label>
-            <input type="text" class="form-control  $errors->has('contrasena') ? 'error' : '' " name="contrasena" id="contrasena">
+            <input type="password" class="form-control  $errors->has('contrasena') ? 'error' : '' " name="contrasena" id="contrasena">
             @if ($errors->has('contrasena'))
             <div class="error">
                 {{$errors->first('contrasena')}}

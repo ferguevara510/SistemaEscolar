@@ -21,9 +21,8 @@ class PreguntaController extends Controller
             'descripcion' => 'required',
             'examen_id' => 'required',
         ]);
-        $examenId = $nuevaPregunta['examen_id'];
-        Pregunta::create($nuevaPregunta);
-        return redirect()->route('examenShow',$examenId)->with('success','Pregunta modificada');
+        $pregunta = Pregunta::create($nuevaPregunta);
+        return redirect()->route('preguntaShow',$pregunta->id)->with('success','Pregunta modificada');
     }
 
     public function eliminarPregunta(Pregunta $pregunta){

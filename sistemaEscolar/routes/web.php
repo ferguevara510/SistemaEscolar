@@ -55,7 +55,7 @@ Route::post('/registrarContenido', [ContenidoController::class, 'registrarConten
 Route::get('/registrarExamen', [ExamenController::class, 'vistaRegistrarExamen'])->name('examenIndex');
 Route::post('/registrarExamen', [ExamenController::class, 'registrarExamen'])->name('examenStorage');
 //Pregunta
-Route::get('/registrarPregunta/{preguntaId}', [PreguntaController::class, 'vistaRegistrarPregunta'])->name('preguntaIndex');
+Route::get('/registrarPregunta/{examenId}', [PreguntaController::class, 'vistaRegistrarPregunta'])->name('preguntaIndex');
 Route::post('/registrarPregunta', [PreguntaController::class, 'registrarPregunta'])->name('preguntaStorage');
 //Respuesta
 Route::post('/registrarRespuesta', [RespuestaController::class, 'registrarRespuesta'])->name('respuestaStorage');

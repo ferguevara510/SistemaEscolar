@@ -57,7 +57,7 @@
     </form>
     @if (count($preguntas) < $examen->numeroPreguntas)
         <div class="btn-registrar mt-5">
-            <button type="button" class="btn-opcion"><a class="texto-link" href="{{ route('preguntaIndex',$examen->id) }}">Agregar Pregunta ➕</a></button>
+            <button type="button" class="btn-opcion"><a class="texto-link" href="{{ route('preguntaIndex', $examen->id ) }}">Agregar Pregunta ➕</a></button>
         </div>
     @endif
     
