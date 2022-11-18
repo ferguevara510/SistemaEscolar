@@ -6,7 +6,7 @@
 <link href="{{ asset('/css/consultar.css') }}" rel="stylesheet">
 
 <div>
-    <p class="titulo">SEF > Lista de Examenes > Modificar datos Examenes</p>
+    <p class="titulo">SEF > Lista de practicas > Modificar datos de practica</p>
 </div>
 
 @if ($message = Session::get('success'))

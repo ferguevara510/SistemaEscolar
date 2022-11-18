@@ -5,7 +5,7 @@
 <link href="{{ asset('/css/consultar.css') }}" rel="stylesheet">
 
 <div>
-    <p class="titulo">SEF > Lista de Profesores</p>
+    <p class="titulo">SEF > Lista de profesores</p>
 </div>
 
 @if ($message = Session::get('success'))
@@ -36,6 +36,7 @@
                 <th scope="col">Entidad</th>
                 <th scope="col">Area Academica</th>
                 <th scope="col">Region</th>
+                <th scope="col">Cambiar Contraseña</th>
                 <th scope="col">Modificar</th>
                 <th scope="col">Eliminar</th>
             </tr>
@@ -51,6 +52,7 @@
                 <td>{{$profesor->entidad}}</td>
                 <td>{{$profesor->areaAcademica}}</td>
                 <td>{{$profesor->region}}</td>
+                <td><button type="button" id="modificarProfesor" class="btn-opcion"><a class="texto-link" href="{{ route('profesorContrasena', $profesor->id) }}">Cambiar contraseña ✍️</a></button></td>
                 <td><button type="button" id="modificarProfesor" class="btn-opcion"><a class="texto-link" href="{{ route('profesorShow', $profesor->id) }}">Modificar ✍️</a></button></td>
                 <td>
                     <form method="post" action="{{ route('profesorDelete', $profesor->id) }}">

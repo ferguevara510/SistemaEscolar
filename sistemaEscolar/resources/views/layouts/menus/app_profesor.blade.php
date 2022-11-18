@@ -27,7 +27,7 @@
                     </div>
                     <li><a class="texto-link" href="{{ route('estudianteProfList') }}">Estudiantes 🎓</a></li>
                     <li><a class="texto-link" href="{{ route('contenidoList') }}">Contenido 📚</a></li>
-                    <li><a class="texto-link" href="{{ route('examenList') }}">Examenes 📝</a></li>
+                    <li><a class="texto-link" href="{{ route('examenList') }}">Practicas 📝</a></li>
                     <li class="session ">
                         <a id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}

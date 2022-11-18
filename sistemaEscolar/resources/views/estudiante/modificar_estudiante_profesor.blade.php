@@ -5,7 +5,7 @@
 <link href="{{ asset('/css/registro.css') }}" rel="stylesheet">
 
 <div>
-    <p class="titulo">SEF > Lista de Estudiantes > Modificar datos Estudiante</p>
+    <p class="titulo">SEF > Lista de estudiantes > Modificar datos de estudiante</p>
 </div>
 
 @if ($message = Session::get('success'))
@@ -56,16 +56,6 @@
             @if ($errors->has('correoInstitucional'))
             <div class="error">
                 {{$errors->first('correoInstituional')}}
-            </div>
-            @endif
-        </div>
-
-        <div class="form-group form-registro">
-            <label>Contraseña Estudiante</label>
-            <input value="{{$estudiante->contrasena}}" type="text" class="form-control  $errors->has('contrasena') ? 'error' : '' " name="contrasena" id="contrasena">
-            @if ($errors->has('contrasena'))
-            <div class="error">
-                {{$errors->first('contrasena')}}
             </div>
             @endif
         </div>

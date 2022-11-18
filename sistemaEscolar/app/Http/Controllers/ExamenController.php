@@ -31,7 +31,7 @@ class ExamenController extends Controller
             'profesor_id' => 'required',
         ]);
         $examen = Examen::create($nuevoExamen);
-        return redirect()->route('examenShow',$examen->id)->with('success','Estudiante creado');
+        return redirect()->route('examenShow',$examen->id)->with('success','Practica creada');
     }
 
     public function consultarExamenes(Request $request){
@@ -49,7 +49,7 @@ class ExamenController extends Controller
 
     public function eliminarExamen(Examen $examen){
         $examen->delete();
-        return redirect()->route('examenList')->with('success','Examen eliminado');
+        return redirect()->route('examenList')->with('success','Practica eliminada');
     }
 
     public function mostrarExamen(Examen $examen){
@@ -71,7 +71,7 @@ class ExamenController extends Controller
             $examen->numeroPreguntas= $request->get('numeroPreguntas');
             $examen->profesor_id = $request->get('profesor_id');
             $examen->update();
-            $respuestaPeticion['success'] = 'Examen modificado';
+            $respuestaPeticion['success'] = 'Practica modificada';
         }else{
             $respuestaPeticion['error'] = 'No puedes poner menos preguntas de las creadas';
         }
@@ -90,7 +90,7 @@ class ExamenController extends Controller
 
         $estudiante = Estudiante::find($estudiante);
 
-        return redirect()->route('examenResultados', $examen)->with('success', "Examen habilidatado para el alumno con matricula {$estudiante->matricula}");
+        return redirect()->route('examenResultados', $examen)->with('success', "Practica habilidatada para el alumno con matricula {$estudiante->matricula}");
     }
 
     public function listarResultadosExamenes(Request $request, Examen $examen){

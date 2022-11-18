@@ -5,7 +5,7 @@
 <link href="{{ asset('/css/consultar.css') }}" rel="stylesheet">
 
 <div>
-    <p class="titulo">SEF > Lista de Contenido</p>
+    <p class="titulo">SEF > Lista de contenidos</p>
 </div>
 
 @if ($message = Session::get('success'))

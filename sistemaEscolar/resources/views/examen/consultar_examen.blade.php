@@ -5,7 +5,7 @@
 <link href="{{ asset('/css/consultar.css') }}" rel="stylesheet">
 
 <div>
-    <p class="titulo">SEF > Lista de Examenes</p>
+    <p class="titulo">SEF > Lista de practicas</p>
 </div>
 
 @if ($message = Session::get('success'))
@@ -15,8 +15,8 @@
 @endif
 <div class="line-search">
     <section>
-        <form method="get" action="{{ route('estudianteList') }}">		    
-            <input class="line-search-input" type="search" name="busqueda" placeholder="Nombre estudiante">		    	
+        <form method="get" action="{{ route('examenList') }}">		    
+            <input class="line-search-input" type="search" name="busqueda" placeholder="Nombre examen">		    	
             <button class="btn-opcion-buscar" type="submit"><a class="texto-link">Buscar 🔍</a></button>
         </form>
     </section>
@@ -28,7 +28,7 @@
     <table class="table tabla-consultar">
         <thead>
             <tr class="tabla-consultar">
-                <th scope="col">Examen</th>
+                <th scope="col">Practica</th>
                 <th scope="col">Preguntas</th>
                 <th scope="col">Resultados</th>
                 <th scope="col">Modificar</th>

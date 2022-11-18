@@ -5,7 +5,7 @@
 <link href="{{ asset('/css/geogebra.css') }}" rel="stylesheet">
 
 <div>
-    <p class="titulo">SEF > Herramienta de Graficación</p>
+    <p class="titulo">SEF > Herramienta de graficación</p>
 </div>
 
 <div class="line-search seccion-calculadora" id="ggb-element">

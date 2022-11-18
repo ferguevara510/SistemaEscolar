@@ -27,7 +27,7 @@
                     </div>
                     <li><a class="texto-link" href="{{ route('geogebra') }}">Graficación 📈</a></li>
                     <li><a class="texto-link" href="{{ route('contenidoEstList') }}">Contenido 📚</a></li>
-                    <li><a class="texto-link" href="{{ route('examenPresentar') }}">Examenes 📝</a></li>
+                    <li><a class="texto-link" href="{{ route('examenPresentar') }}">Practicas 📝</a></li>
                     <li><a class="texto-link" href="{{ route('examenEstudiante') }}">Resultados 🗳️</a></li>
                     <li class="session ">
                         <a id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

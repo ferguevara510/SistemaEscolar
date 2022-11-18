@@ -1,8 +1,14 @@
 @extends('layouts.footer')
 @extends('layouts.menus.app_profesor')
 @section('content')
+
 <link href="{{ asset('/css/registro.css') }}" rel="stylesheet">
 <div class="container-registro mt-5">
+
+    <div>
+        <p class="titulo">SEF > Lista de practicas > Registrar datos de practica</p>
+    </div>
+    
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -18,7 +24,7 @@
         </div>
         
         <div class="form-group form-registro">
-            <label>Titulo Examen</label>
+            <label>Titulo</label>
             <input type="text" class="form-control $errors->has('titulo') ? 'error' : '' " name="titulo">
             @if ($errors->has('titulo'))
             <div class="error">

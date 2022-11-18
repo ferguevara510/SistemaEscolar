@@ -11,14 +11,14 @@
 @endif
 
 <div>
-    <p class="titulo">SEF > Lista de Examenes</p>
+    <p class="titulo">SEF > Lista de practicas</p>
 </div>
 
 <div class="contenedor-tarjetas">
     <table class="table tabla-consultar">
         <thead>
             <tr class="tabla-consultar">
-                <th scope="col">Examen</th>
+                <th scope="col">Practica</th>
                 <th scope="col">Numero de preguntas</th>
                 <th scope="col">Realizar</th>
             </tr>

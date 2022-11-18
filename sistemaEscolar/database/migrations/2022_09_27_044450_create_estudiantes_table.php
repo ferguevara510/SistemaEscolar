@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('apellidosEstudiante', 100);
             $table->string('matricula', 10);
             $table->string('correoInstitucional', 150);
-            $table->string('contrasena', 16);
+            $table->string('contrasena');
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

@@ -11,9 +11,9 @@
     <link rel="preload" href="{{ asset('css/colores.css') }}" as="style">
     <link rel="stylesheet" href="{{ asset('css/colores.css') }}">
     <link rel="preload" href="{{ asset('css/index.css') }}" as="style">
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}">>
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     <link rel="preload" href="{{ asset('css/footer.css') }}" as="style">
-    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">>
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     <link rel="preload" href="js/index.js" as="script">
 </head>
 

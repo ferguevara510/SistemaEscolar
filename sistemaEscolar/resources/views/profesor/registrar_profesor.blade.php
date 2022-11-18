@@ -5,7 +5,7 @@
 <link href="{{ asset('/css/registro.css') }}" rel="stylesheet">
 
 <div>
-    <p class="titulo">SEF > Lista de Profesores > Registrar datos Profesor</p>
+    <p class="titulo">SEF > Lista de profesores > Registrar datos de profesor</p>
 </div>
 
 @if ($message = Session::get('success'))
@@ -30,7 +30,7 @@
         </div>
 
         <div class="form-group form-registro">
-            <label>Apellidos Profesore</label>
+            <label>Apellidos Profesor</label>
             <input type="text" class="form-control  $errors->has('apellidosProfesor') ? 'error' : '' " name="apellidosProfesor" id="apellidosProfesor">
             @if ($errors->has('apellidosProfesor'))
             <div class="error">

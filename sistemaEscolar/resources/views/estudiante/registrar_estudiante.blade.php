@@ -4,7 +4,7 @@
     <link href="{{ asset('/css/registro.css') }}" rel="stylesheet">
 
     <div>
-        <p class="titulo">SEF > Lista de Estudiantes > Registrar datos Estudiante</p>
+        <p class="titulo">SEF > Lista de estudiantes > Registrar datos de estudiante</p>
     </div>
 
     @if ($message = Session::get('error'))

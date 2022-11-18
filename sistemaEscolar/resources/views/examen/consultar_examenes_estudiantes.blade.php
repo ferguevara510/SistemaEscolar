@@ -11,7 +11,7 @@
 @endif
 
 <div>
-    <p class="titulo">SEF > Lista de Examenes > {{$examen->titulo}}</p>
+    <p class="titulo">SEF > Lista de practicas > {{$examen->titulo}}</p>
 </div>
 
 @if ($message = Session::get('success'))

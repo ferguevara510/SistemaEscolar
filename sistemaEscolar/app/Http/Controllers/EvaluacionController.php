@@ -24,7 +24,7 @@ class EvaluacionController extends Controller
 
     public function comenzarExamen(Request $request, Examen $examen){
         if(count($examen->preguntas) === 0){
-            return redirect()->route('examenEstudiante')->with('error', 'El examen no tiene preguntas disponibles');
+            return redirect()->route('examenEstudiante')->with('error', 'La practica no tiene preguntas disponibles');
         }
         $request->session()->pull('preguntas');
         $request->session()->pull('examen');
@@ -33,7 +33,7 @@ class EvaluacionController extends Controller
         $estudiante = Estudiante::query()->where('user_id','=',$user->id)->first();
         $evaluacionActual = Evaluacion::query()->where('examen_id', '=', $examen->id)->where('estudiante_id','=',$estudiante->id)->first();
         if($evaluacionActual){
-            return redirect()->route('examenEstudiante')->with('error', 'Ya realizaste este examen');
+            return redirect()->route('examenEstudiante')->with('error', 'Ya realizaste esta practica');
         }
         $evaluacion = ['calificacion' => 0, 'fechaAplicacion' => date('Y-m-d'), 'examen_id' => $examen->id, 'estudiante_id' => $estudiante->id];
         Evaluacion::create($evaluacion);
@@ -65,7 +65,6 @@ class EvaluacionController extends Controller
         $pregunta = end($preguntas);
         $estudiante = $request->session()->get('estudiante');
         ExamenEstudiante::where('pregunta_id', $pregunta->id)->where('examen_id', $examen->id)->where('estudiante_id',$estudiante->id)->update(['respuesta_id' => $request->get('respuesta_id')]);
-
         $respuestas = ExamenEstudiante::where('examen_id','=',$examen->id)->where('estudiante_id','=',$estudiante->id)->get();
         $numeroCorrectas = 0;
         foreach ($respuestas as $respuesta) {
@@ -73,16 +72,13 @@ class EvaluacionController extends Controller
                 $numeroCorrectas++;
             }
         }
-
         $calificacion = $numeroCorrectas / $examen->numeroPreguntas;
         $calificacion = round($calificacion,2);
         $calificacion = $calificacion * 10;
         Evaluacion::where('examen_id', $examen->id)->where('estudiante_id',$estudiante->id)->update(['calificacion' => $calificacion]);
-
         $request->session()->pull('preguntas');
         $request->session()->pull('examen');
         $request->session()->pull('estudiante');
-
         return redirect()->route('examenEstudiante');
     }
 
@@ -93,7 +89,6 @@ class EvaluacionController extends Controller
         $pregunta = $preguntas[intval($index)];
         $estudiante = $request->session()->get('estudiante');
         ExamenEstudiante::where('pregunta_id', $pregunta->id)->where('examen_id', $examen->id)->where('estudiante_id',$estudiante->id)->update(['respuesta_id' => $request->get('respuesta_id')]);
-
         return redirect()->route('preguntaResponder',intval($index) + 1);
     }
 

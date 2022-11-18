@@ -24,7 +24,7 @@ class ProfesorController extends Controller
         $enumEntidad = Entidad::getValues();
         $enumAreaAcademica = AreaAcademica::getValues();
         $enumRegion = Region::getValues();
-        return view('profesor.registrar_profesor', compact('enumLicenciatura','enumEntidad','enumAreaAcademica','enumRegion'));
+        return view('profesor.registrar_profesor',compact('enumLicenciatura','enumEntidad','enumAreaAcademica','enumRegion'));
     }
 
     public function registrarProfesor (Request $request){
@@ -39,12 +39,10 @@ class ProfesorController extends Controller
             'correoInstitucional' => ['required', 'email', 'unique:profesors'],
             'contrasena' => 'required',
         ]);
-
         $usuarioExistente = User::query()->where('email','=',$nuevoProfesor['correoInstitucional'])->first();
         if($usuarioExistente){
             return back()->with('error','El correo ya esta ocupado');
         }
-
         $newUser = [
             'name' => $nuevoProfesor['nombreProfesor'],
             'email' => $nuevoProfesor['correoInstitucional'],
@@ -66,43 +64,62 @@ class ProfesorController extends Controller
         else {
             $profesors = Profesor::all();
         }
-        return view('profesor.consultar_profesor', compact('profesors'));
+        return view('profesor.consultar_profesor',compact('profesors'));
     }
 
     public function modificarProfesor (Request $request, $profesor){
         $request->validate([
             'nombreProfesor' => 'required',
             'apellidosProfesor' => 'required',
-            'noPersonal' =>  ['required', 'unique:profesors'],
-            'correoInstitucional' => ['required', 'email', 'unique:profesors'],
-            'contrasena' => 'required',
+            'noPersonal' =>  ['required'],
+            'correoInstitucional' => ['required', 'email'],
             'licenciatura' => ['required', new EnumValue(Licenciatura::class)],
             'entidad' => ['required', new EnumValue(Entidad::class)],
             'areaAcademica' => ['required', new EnumValue(AreaAcademica::class)],
             'region' => ['required', new EnumValue(Region::class)],
         ]);
-
         $profesor= Profesor::find($profesor);
         $usuarioExistente = User::query()->where('email','=',$request->get('correoInstitucional'))->where('id', '!=', $profesor->user_id)->first();
         if($usuarioExistente){
             return back()->with('error','El correo ya esta ocupado');
         }
 
-        $usuario = User::find($profesor->user_id);
-        $usuario->name = $request->get('nombreEstudiante');
-        $usuario->email = $request->get('correoInstitucional');
+        $profesorExistente = Profesor::query()->where('noPersonal','=',$request->get('noPersonal'))->where('id', '!=', $profesor->id)->first();
+        if($profesorExistente){
+            return back()->with('error', 'El numero de personal esta ocupada');
+        }
 
+        $usuario = User::find($profesor->user_id);
+        $usuario->name = $request->get('nombreProfesor');
+        $usuario->email = $request->get('correoInstitucional');
         $profesor->nombreProfesor = $request->get('nombreProfesor');
         $profesor->apellidosProfesor= $request->get('apellidosProfesor');
         $profesor->noPersonal = $request->get('noPersonal');
         $profesor->correoInstitucional = $request->get('correoInstitucional');
-        $profesor->contrasena = $request->get('contrasena');
         $profesor->licenciatura = $request->get('licenciatura');
         $profesor->entidad = $request->get('entidad');
         $profesor->areaAcademica = $request->get('areaAcademica');
         $profesor->region = $request->get('region');
         $profesor->update();
-        return redirect('/consultarProfesor')->with('success','Profesor modificado');
+        return redirect('/consultarProfesor')->with('success',"Profesor modificado {$profesor->nombreProfesor}, {$profesor->apellidosProfesor}, {$profesor->noPersonal}, {$profesor->correoInstitucional}, {$profesor->licenciatura}, {$profesor->entidad}, {$profesor->areaAcademica}, {$profesor->region}");
+    }
+
+    public function vistaCambioContraseña(Request $request, Profesor $profesor){
+        return view('profesor.cambiar_contraseña', compact('profesor'));
+    }
+
+    public function cambiarContraseña(Request $request, Profesor $profesor){
+        $request->validate([
+            'contrasena' => ['required'],
+        ]);
+        $contraseña = Hash::make($request->get('contrasena'));
+        $user = User::find($profesor->user_id);
+        $user->password = $contraseña;
+        $user->update();
+        $profesor->contrasena = $contraseña;
+        $profesor->update();
+
+        return redirect()->route('profesorList')->with('success',"Contraseña modificada {$profesor->nombreProfesor}, {$profesor->apellidosProfesor}, {$profesor->noPersonal}, {$profesor->correoInstitucional}");
     }
 
     public function mostrarProfesor (Profesor $profesor){
@@ -110,11 +127,11 @@ class ProfesorController extends Controller
         $enumEntidad = Entidad::getValues();
         $enumAreaAcademica = AreaAcademica::getValues();
         $enumRegion = Region::getValues();
-        return view('profesor.modificar_profesor', compact('profesor','enumLicenciatura','enumEntidad','enumAreaAcademica','enumRegion'));
+        return view('profesor.modificar_profesor',compact('profesor','enumLicenciatura','enumEntidad','enumAreaAcademica','enumRegion'));
     }
 
     public function eliminarProfesor (Profesor $profesor){
         $profesor->delete();
-        return redirect('/consultarProfesor')->with('success','Profesor eliminado');
+        return redirect('/consultarProfesor')->with('success',"Profesor eliminado {$profesor->nombreProfesor}, {$profesor->apellidosProfesor}, {$profesor->noPersonal}, {$profesor->correoInstitucional}, {$profesor->licenciatura}, {$profesor->entidad}, {$profesor->areaAcademica}, {$profesor->region}");
     }
 }

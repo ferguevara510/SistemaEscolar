@@ -22,7 +22,7 @@ class PreguntaController extends Controller
             'examen_id' => 'required',
         ]);
         $pregunta = Pregunta::create($nuevaPregunta);
-        return redirect()->route('preguntaShow',$pregunta->id)->with('success','Pregunta modificada');
+        return redirect()->route('preguntaShow',$pregunta->id)->with('success','Pregunta registrada');
     }
 
     public function eliminarPregunta(Pregunta $pregunta){
@@ -33,7 +33,7 @@ class PreguntaController extends Controller
 
     public function mostrarPregunta(Pregunta $pregunta){
         $respuestas = Respuesta::query()->where('pregunta_id', '=', $pregunta->id)->get();
-        return view('pregunta.modificar_pregunta', compact('pregunta', 'respuestas'));
+        return view('pregunta.modificar_pregunta',compact('pregunta', 'respuestas'));
     }
 
     public function modificarPregunta(Request $request, $pregunta){

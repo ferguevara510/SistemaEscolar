@@ -1,8 +1,11 @@
 @extends('layouts.footer')
 @extends('layouts.menus.app_estudiante')
 @section('content')
+
+<link href="{{ asset('/css/registro.css') }}" rel="stylesheet">
+
     <div>
-        <p class="titulo">SEF > Examen</p>
+        <p class="titulo">SEF > Practica</p>
     </div>
 
     <div class="card">
@@ -25,11 +28,11 @@
                 @endforeach
                 
                 @if (intval($total) == intval($index) + 1)
-                    <div class="mt-5 div-btn-submit">
+                    <div class="div-btn-submit">
                         <input type="submit" name="send" value="Finalizar" class="btn-opcion btn-opcion-color">
                     </div>
                 @else
-                    <div class="mt-5 div-btn-submit">
+                    <div class="div-btn-submit">
                         <input type="submit" name="send" value="Siguiente" class="btn-opcion btn-opcion-color">
                     </div>
                 @endif
